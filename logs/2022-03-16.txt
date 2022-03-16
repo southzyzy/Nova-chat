@@ -1,0 +1,238 @@
+2022/03/16 18:17:57 QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:17:57 QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:17:57 QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:17:57 QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:17:57 QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:17:57 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:17:57 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:17:57 context.Background bootstrapDial QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:17:57 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:17:57 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:17:57 context.Background bootstrapDial QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:17:57 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:17:57 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:17:57 context.Background bootstrapDial QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:17:57 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:17:57 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:17:57 context.Background bootstrapDial QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:17:58 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:17:58 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:17:58 context.Background bootstrapDial QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:17:58 Annoucing with DHT ...
+2022/03/16 18:17:58 Successfully accounced with DHT !
+2022/03/16 18:17:58 Searching for other peers...
+2022/03/16 18:17:58 I can be reached at:
+2022/03/16 18:17:58 /ip4/172.16.157.1/tcp/59606/p2p/QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc
+2022/03/16 18:17:58 /ip4/127.0.0.1/tcp/59606/p2p/QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc
+2022/03/16 18:17:58 My CID: QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc
+2022/03/16 18:18:04 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/218.212.75.72/tcp/58577 /ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/127.0.0.1/tcp/58577] dial tcp4 127.0.0.1:58577: connect: connection refused
+  * [/ip4/218.212.75.72/tcp/58577] dial tcp4 0.0.0.0:59606->218.212.75.72:58577: i/o timeout
+  * [/ip4/172.16.157.1/tcp/58577] dial tcp4 0.0.0.0:59606->172.16.157.1:58577: i/o timeout
+2022/03/16 18:18:18 QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:18:18 QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:18:18 QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:18:18 QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:18:18 QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:18:18 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:18:18 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:18:18 context.Background bootstrapDial QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:18:18 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:18:18 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:18:18 context.Background bootstrapDial QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:18:18 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:18:18 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:18:18 context.Background bootstrapDial QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:18:18 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:18:18 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:18:18 context.Background bootstrapDial QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:18:19 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:18:19 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:18:19 context.Background bootstrapDial QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:18:19 Annoucing with DHT ...
+2022/03/16 18:18:19 Successfully accounced with DHT !
+2022/03/16 18:18:19 Searching for other peers...
+2022/03/16 18:18:19 I can be reached at:
+2022/03/16 18:18:19 /ip4/172.16.157.1/tcp/59975/p2p/QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB
+2022/03/16 18:18:19 /ip4/127.0.0.1/tcp/59975/p2p/QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB
+2022/03/16 18:18:19 My CID: QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB
+2022/03/16 18:18:24 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577 /ip4/218.212.75.72/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/127.0.0.1/tcp/58577] dial tcp4 127.0.0.1:58577: connect: connection refused
+  * [/ip4/172.16.157.1/tcp/58577] dial tcp4 0.0.0.0:59975->172.16.157.1:58577: i/o timeout
+  * [/ip4/218.212.75.72/tcp/58577] dial tcp4 0.0.0.0:59975->218.212.75.72:58577: i/o timeout
+2022/03/16 18:18:25 - Connected to {QmSQrEmTXYDfikfqK4ejLwJq8QZm9p9TbWX1WHXX6Qkqgc: [/ip4/172.16.157.1/tcp/59606 /ip4/127.0.0.1/tcp/59606 /ip4/218.212.75.72/tcp/17617]}
+2022/03/16 18:18:25 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577 /ip4/218.212.75.72/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/127.0.0.1/tcp/58577] dial tcp4 127.0.0.1:58577: connect: connection refused
+  * [/ip4/218.212.75.72/tcp/58577] dial tcp4 0.0.0.0:59606->218.212.75.72:58577: i/o timeout
+  * [/ip4/172.16.157.1/tcp/58577] dial tcp4 0.0.0.0:59606->172.16.157.1:58577: i/o timeout
+2022/03/16 18:18:45 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577 /ip4/218.212.75.72/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/127.0.0.1/tcp/58577] dial tcp4 127.0.0.1:58577: connect: connection refused
+  * [/ip4/218.212.75.72/tcp/58577] dial tcp4 0.0.0.0:59606->218.212.75.72:58577: i/o timeout
+  * [/ip4/172.16.157.1/tcp/58577] dial tcp4 0.0.0.0:59606->172.16.157.1:58577: i/o timeout
+2022/03/16 18:18:59 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577 /ip4/218.212.75.72/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/127.0.0.1/tcp/58577] dial tcp4 127.0.0.1:58577: connect: connection refused
+  * [/ip4/172.16.157.1/tcp/58577] dial tcp4 0.0.0.0:59975->172.16.157.1:58577: i/o timeout
+  * [/ip4/218.212.75.72/tcp/58577] dial tcp4 0.0.0.0:59975->218.212.75.72:58577: i/o timeout
+2022/03/16 18:19:05 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/218.212.75.72/tcp/58577 /ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/127.0.0.1/tcp/58577] dial tcp4 127.0.0.1:58577: connect: connection refused
+  * [/ip4/218.212.75.72/tcp/58577] dial tcp4 0.0.0.0:59606->218.212.75.72:58577: i/o timeout
+  * [/ip4/172.16.157.1/tcp/58577] dial tcp4 0.0.0.0:59606->172.16.157.1:58577: i/o timeout
+2022/03/16 18:19:05 - Connected to {QmQRWpQnFtxze4YNqtm44GWCZd5i6HELRvcpcLHvKZ1GEB: [/ip4/127.0.0.1/tcp/59975 /ip4/192.168.18.16/tcp/59975 /ip4/218.212.75.72/tcp/26816]}
+2022/03/16 18:19:17 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577 /ip4/218.212.75.72/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/172.16.157.1/tcp/58577] dial backoff
+  * [/ip4/218.212.75.72/tcp/58577] dial backoff
+  * [/ip4/127.0.0.1/tcp/58577] dial tcp4 127.0.0.1:58577: connect: connection refused
+2022/03/16 18:19:19 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/218.212.75.72/tcp/58577 /ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/127.0.0.1/tcp/58577] dial tcp4 127.0.0.1:58577: connect: connection refused
+  * [/ip4/172.16.157.1/tcp/58577] dial tcp4 0.0.0.0:59975->172.16.157.1:58577: i/o timeout
+  * [/ip4/218.212.75.72/tcp/58577] dial tcp4 0.0.0.0:59975->218.212.75.72:58577: i/o timeout
+2022/03/16 18:19:26 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/218.212.75.72/tcp/58577 /ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/172.16.157.1/tcp/58577] dial backoff
+  * [/ip4/218.212.75.72/tcp/58577] dial backoff
+  * [/ip4/127.0.0.1/tcp/58577] dial tcp4 127.0.0.1:58577: connect: connection refused
+2022/03/16 18:19:31 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577 /ip4/218.212.75.72/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/127.0.0.1/tcp/58577] dial backoff
+  * [/ip4/172.16.157.1/tcp/58577] dial tcp4 0.0.0.0:59606->172.16.157.1:58577: i/o timeout
+  * [/ip4/218.212.75.72/tcp/58577] dial tcp4 0.0.0.0:59606->218.212.75.72:58577: i/o timeout
+2022/03/16 18:19:32 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577 /ip4/218.212.75.72/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/172.16.157.1/tcp/58577] dial backoff
+  * [/ip4/127.0.0.1/tcp/58577] dial backoff
+  * [/ip4/218.212.75.72/tcp/58577] dial backoff
+2022/03/16 18:19:42 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/127.0.0.1/tcp/58577 /ip4/218.212.75.72/tcp/58577 /ip4/172.16.157.1/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/172.16.157.1/tcp/58577] dial backoff
+  * [/ip4/218.212.75.72/tcp/58577] dial backoff
+  * [/ip4/127.0.0.1/tcp/58577] dial tcp4 127.0.0.1:58577: connect: connection refused
+2022/03/16 18:19:44 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/127.0.0.1/tcp/58577 /ip4/218.212.75.72/tcp/58577 /ip4/172.16.157.1/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/172.16.157.1/tcp/58577] dial backoff
+  * [/ip4/127.0.0.1/tcp/58577] dial backoff
+  * [/ip4/218.212.75.72/tcp/58577] dial backoff
+2022/03/16 18:19:48 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577 /ip4/218.212.75.72/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/172.16.157.1/tcp/58577] dial backoff
+  * [/ip4/127.0.0.1/tcp/58577] dial backoff
+  * [/ip4/218.212.75.72/tcp/58577] dial backoff
+2022/03/16 18:19:52 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577 /ip4/218.212.75.72/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/127.0.0.1/tcp/58577] dial tcp4 127.0.0.1:58577: connect: connection refused
+  * [/ip4/218.212.75.72/tcp/58577] dial tcp4 0.0.0.0:59975->218.212.75.72:58577: i/o timeout
+  * [/ip4/172.16.157.1/tcp/58577] dial tcp4 0.0.0.0:59975->172.16.157.1:58577: i/o timeout
+2022/03/16 18:19:52 - Error connecting to {QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U: [/ip4/172.16.157.1/tcp/58577 /ip4/127.0.0.1/tcp/58577 /ip4/218.212.75.72/tcp/58577]}: failed to dial QmZijHNCkvebpHEx5mApNpDjMgq1JTq1dcQMUskrEWBH2U:
+  * [/ip4/172.16.157.1/tcp/58577] dial backoff
+  * [/ip4/127.0.0.1/tcp/58577] dial backoff
+  * [/ip4/218.212.75.72/tcp/58577] dial backoff
+2022/03/16 18:20:07 QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:20:07 QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:20:07 QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:20:07 QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:20:07 QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:20:07 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:20:07 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:20:07 context.Background bootstrapDial QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:20:08 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:20:08 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:20:08 context.Background bootstrapDial QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:20:08 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:20:08 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:20:08 context.Background bootstrapDial QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:20:08 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:20:08 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:20:08 context.Background bootstrapDial QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:20:08 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:20:08 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:20:08 context.Background bootstrapDial QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:20:08 Annoucing with DHT ...
+2022/03/16 18:20:08 Successfully accounced with DHT !
+2022/03/16 18:20:08 Searching for other peers...
+2022/03/16 18:20:08 I can be reached at:
+2022/03/16 18:20:08 /ip4/192.168.18.16/tcp/61077/p2p/QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k
+2022/03/16 18:20:08 /ip4/127.0.0.1/tcp/61077/p2p/QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k
+2022/03/16 18:20:08 My CID: QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k
+2022/03/16 18:20:12 - Connected to {12D3KooWGRJo1vLDBtfS8a4cVss2QVqvbCaPgtmwwgpUtW675QRa: [/ip4/147.75.87.165/tcp/4001 /ip4/147.75.87.165/tcp/4002/ws /ip6/2604:1380:4601:bf00::9/tcp/4002/ws /ip6/2604:1380:4601:bf00::9/tcp/4001]}
+2022/03/16 18:20:17 - Error connecting to {12D3KooWDaha2JyiYKqQQbobTva1vX6cnP5HrvwUsv5KPvAQJ1ST: [/ip4/10.1.0.52/tcp/10221 /ip4/127.0.0.1/tcp/10221]}: failed to dial 12D3KooWDaha2JyiYKqQQbobTva1vX6cnP5HrvwUsv5KPvAQJ1ST:
+  * [/ip4/127.0.0.1/tcp/10221] dial tcp4 127.0.0.1:10221: connect: connection refused
+  * [/ip4/10.1.0.52/tcp/10221] dial tcp4 0.0.0.0:61077->10.1.0.52:10221: i/o timeout
+2022/03/16 18:20:22 QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:20:22 QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:20:22 QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:20:22 QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:20:22 QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:20:22 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:20:22 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:20:22 context.Background bootstrapDial QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:20:22 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:20:22 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:20:22 context.Background bootstrapDial QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:20:22 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:20:22 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:20:22 context.Background bootstrapDial QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:20:23 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:20:23 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:20:23 context.Background bootstrapDial QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:20:23 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:20:23 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:20:23 context.Background bootstrapDial QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:20:23 Annoucing with DHT ...
+2022/03/16 18:20:23 Successfully accounced with DHT !
+2022/03/16 18:20:23 Searching for other peers...
+2022/03/16 18:20:23 I can be reached at:
+2022/03/16 18:20:23 /ip4/192.168.18.16/tcp/61403/p2p/QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA
+2022/03/16 18:20:23 /ip4/127.0.0.1/tcp/61403/p2p/QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA
+2022/03/16 18:20:23 My CID: QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA
+2022/03/16 18:20:42 - Connected to {12D3KooWAdxvJCV5KXZ6zveTJmnYGrSzAKuLUKZYkZssLk7UKv4i: [/ip6/2604:1380:45e1:2700::9/tcp/4002/ws /ip4/139.178.91.231/tcp/4001 /ip4/139.178.91.231/tcp/4002/ws /ip6/2604:1380:45e1:2700::9/tcp/4001]}
+2022/03/16 18:20:43 - Connected to {12D3KooWJc7GbwkjVg9voPNxdRnmEDS3i8NXNwRXD6kLattaMnE4: [/ip6/2604:1380:4601:bf00::7/tcp/4001 /ip6/2604:1380:4601:bf00::7/tcp/4002/ws /ip4/147.75.101.41/tcp/4001 /ip4/147.75.101.41/tcp/4002/ws]}
+2022/03/16 18:20:44 - Connected to {12D3KooWMSrRXHgbBTsNGfxG1E44fLB6nJ5wpjavXj4VGwXKuz9X: [/ip4/147.75.32.99/tcp/4001 /ip6/2604:1380:4601:7100::1/tcp/4001 /ip4/147.75.32.99/tcp/4002/ws /ip6/2604:1380:4601:7100::1/tcp/4002/ws]}
+2022/03/16 18:20:45 - Connected to {12D3KooWMoAAVDbwuZc8oKALPJc9QDEe95V394fzKsEouB5DNG8T: [/ip4/145.40.82.171/tcp/4001 /ip4/145.40.82.171/tcp/4002/ws /ip6/2604:1380:1000:9f00::1/tcp/4001 /ip6/2604:1380:1000:9f00::1/tcp/4002/ws]}
+2022/03/16 18:21:26 QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:21:26 QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:21:26 QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:21:26 QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:21:26 QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:21:26 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:21:26 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:21:26 context.Background bootstrapDial QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/16 18:21:26 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:21:26 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:21:26 context.Background bootstrapDial QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/16 18:21:26 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:21:26 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:21:26 context.Background bootstrapDial QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/16 18:21:27 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:21:27 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:21:27 context.Background bootstrapDial QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/16 18:21:27 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:21:27 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:21:27 context.Background bootstrapDial QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/16 18:21:27 Annoucing with DHT ...
+2022/03/16 18:21:27 Successfully accounced with DHT !
+2022/03/16 18:21:27 Searching for other peers...
+2022/03/16 18:21:27 I can be reached at:
+2022/03/16 18:21:27 /ip4/192.168.18.16/tcp/62004/p2p/QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS
+2022/03/16 18:21:27 /ip4/127.0.0.1/tcp/62004/p2p/QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS
+2022/03/16 18:21:27 My CID: QmdgNYKfM845W5WQUnLH1w8ghzA6gNRZUhH52fLa2VXBpS
+2022/03/16 18:21:29 - Connected to {12D3KooWJEfH2MB4RsUoaJPogDPRWbFTi8iehsxsqrQpiJwFNDrP: [/ip6/2604:1380:45f1:8400::5/tcp/4002/ws /ip4/136.144.57.15/tcp/4002/ws /ip4/136.144.57.15/tcp/4001 /ip6/2604:1380:45f1:8400::5/tcp/4001]}
+2022/03/16 18:21:30 - Connected to {12D3KooWGRJo1vLDBtfS8a4cVss2QVqvbCaPgtmwwgpUtW675QRa: [/ip4/147.75.87.165/tcp/4002/ws /ip4/147.75.87.165/tcp/4001 /ip6/2604:1380:4601:bf00::9/tcp/4001 /ip6/2604:1380:4601:bf00::9/tcp/4002/ws]}
+2022/03/16 18:21:36 - Connected to {12D3KooWAdxvJCV5KXZ6zveTJmnYGrSzAKuLUKZYkZssLk7UKv4i: [/ip4/139.178.91.231/tcp/4002/ws /ip6/2604:1380:45e1:2700::9/tcp/4002/ws /ip4/139.178.91.231/tcp/4001 /ip6/2604:1380:45e1:2700::9/tcp/4001]}
+2022/03/16 18:21:42 - Connected to {12D3KooWBnmsaeNRP6SCdNbhzaNHihQQBPDhmDvjVGsR1EbswncV: [/ip4/147.75.87.85/tcp/4002/ws /ip6/2604:1380:4601:bf00::1/tcp/4001 /ip6/2604:1380:4601:bf00::1/tcp/4002/ws /ip4/147.75.87.85/tcp/4001]}
+2022/03/16 18:21:54 - Connected to {12D3KooWHpE5KiQTkqbn8KbU88ZxwJxYJFaqP4mp9Z9bhNPhym9V: [/ip6/2604:1380:45f1:8400::b/tcp/4001 /ip6/2604:1380:45f1:8400::b/tcp/4002/ws /ip4/147.75.63.131/tcp/4002/ws /ip4/147.75.63.131/tcp/4001]}
+2022/03/16 18:21:55 - Connected to {12D3KooWHXKaRAKgQbPNqgpJwojmcHUajSFnQvHdKjPRbVHRhobC: [/ip4/147.75.108.229/tcp/4001 /ip4/147.75.108.229/tcp/4002/ws /ip6/2604:1380:45e2:e600::5/tcp/4001 /ip6/2604:1380:45e2:e600::5/tcp/4002/ws]}
+2022/03/16 18:21:56 - Connected to {12D3KooWJc7GbwkjVg9voPNxdRnmEDS3i8NXNwRXD6kLattaMnE4: [/ip6/2604:1380:4601:bf00::7/tcp/4002/ws /ip6/2604:1380:4601:bf00::7/tcp/4001 /ip4/147.75.101.41/tcp/4001 /ip4/147.75.101.41/tcp/4002/ws]}
+2022/03/16 18:21:59 - Connected to {12D3KooWK2q1YYRBchmyAyyfLhKjvXMvYByt2zn6pbM3yA8Z2DJZ: [/ip4/139.178.68.73/tcp/4001 /ip6/2604:1380:45e2:e600::9/tcp/4002/ws /ip6/2604:1380:45e2:e600::9/tcp/4001 /ip4/139.178.68.73/tcp/4002/ws]}
+2022/03/16 18:22:00 - Connected to {12D3KooWKytRAd2ujxhGzaLHKJuje8sVrHXvjGNvHXovpar5KaKQ: [/ip6/2604:1380:45f1:8400::3/tcp/4002/ws /ip4/136.144.56.153/tcp/4001 /ip4/136.144.56.153/tcp/4002/ws /ip6/2604:1380:45f1:8400::3/tcp/4001]}
+2022/03/16 18:22:01 - Connected to {12D3KooWLSMVRxtFrRWofS6MjysgWnPh7iiFEGYeEAeBQceNrf4G: [/ip4/147.75.108.191/tcp/4001 /ip4/147.75.108.191/tcp/4002/ws /ip6/2604:1380:45e2:e600::7/tcp/4001 /ip6/2604:1380:45e2:e600::7/tcp/4002/ws]}
+2022/03/16 18:22:07 - Connected to {12D3KooWQYBPcvxFnnWzPGEx6JuBnrbF1FZq4jTahczuG2teEk1m: [/ip4/147.75.80.9/tcp/4001 /ip4/147.75.80.9/tcp/4002/ws /ip6/2604:1380:4601:4200::5/tcp/4001 /ip6/2604:1380:4601:4200::5/tcp/4002/ws]}
+2022/03/16 18:22:07 - Connected to {QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k: [/ip4/218.212.75.72/tcp/63915 /ip4/192.168.18.16/tcp/61077 /ip4/127.0.0.1/tcp/61077]}
+2022/03/16 18:22:07 - Connected to {QmRqQ2v6iF5EisNbPXbKd7aXoQRTimC32UWdraFgJi6rjA: [/ip4/218.212.75.72/tcp/61403 /ip4/192.168.18.16/tcp/61403 /ip4/127.0.0.1/tcp/61403]}
+2022/03/16 18:22:08 - Connected to {12D3KooWDtiA9w5c37MnFpGWr2M12m8neoUqDroHEMsJVuf3ELi7: [/ip4/80.82.17.10/tcp/9999]}
+2022/03/16 18:22:10 - Connected to {12D3KooWCpu8Nk4wmoXSsVeVSVzVHmrwBnEoC9jpcVpeWP7n67Bt: [/ip4/145.40.69.171/tcp/4001 /ip4/145.40.69.171/tcp/4002/ws /ip6/2604:1380:45f1:3c00::3/tcp/4001 /ip6/2604:1380:45f1:3c00::3/tcp/4002/ws]}
+2022/03/16 18:22:11 - Connected to {12D3KooWKKcYZGRtQVdZVrTuARdJHLSBymB7dNN1R6PWwUT24qK4: [/ip4/136.144.57.171/tcp/4001 /ip6/2604:1380:45f1:f100::5/tcp/4001 /ip4/136.144.57.171/tcp/4002/ws /ip6/2604:1380:45f1:f100::5/tcp/4002/ws]}
+2022/03/16 18:22:12 - Connected to {12D3KooWPySxxWQjBgX9Jp6uAHQfVmdq8HG1gVvS1fRawHNSrmqW: [/ip6/2604:1380:4601:4200::1/tcp/4002/ws /ip6/2604:1380:4601:4200::1/tcp/4001 /ip4/147.75.33.191/tcp/4001 /ip4/147.75.33.191/tcp/4002/ws]}
+2022/03/16 18:22:13 - Connected to {12D3KooWKAd5C78zMyqbaMCm7Pt9CMyAy6eoJNzedadUuiDBkfhY: [/ip4/185.37.216.82/tcp/1347 /ip6/2a04:7340:0:1002::4/tcp/1347]}
+2022/03/16 18:22:14 - Connected to {12D3KooWCPjVv1qZEy8twPUK9fzEvNSF3JxY7zwAFGzybsm2J2cP: [/ip4/145.40.69.211/tcp/4002/ws /ip6/2604:1380:45f1:f100::7/tcp/4001 /ip6/2604:1380:45f1:f100::7/tcp/4002/ws /ip4/145.40.69.211/tcp/4001]}
+2022/03/16 18:22:15 - Connected to {12D3KooW9yi2xLhXds9HC4x9vRN99mphq6ds8qN2YRf8zks1F32G: [/ip4/149.5.22.34/tcp/24002]}
+2022/03/16 18:22:17 - Connected to {12D3KooWBwUERBhJPtZ7hg5N3q1DesvJ67xx9RLdSaStBz9Y6Ny8: [/dns4/yablufc.ddns.net/tcp/4567]}
+2022/03/16 18:22:22 - Error connecting to {12D3KooWDaha2JyiYKqQQbobTva1vX6cnP5HrvwUsv5KPvAQJ1ST: [/ip4/127.0.0.1/tcp/10221 /ip4/10.1.0.52/tcp/10221]}: failed to dial 12D3KooWDaha2JyiYKqQQbobTva1vX6cnP5HrvwUsv5KPvAQJ1ST:
+  * [/ip4/127.0.0.1/tcp/10221] dial tcp4 127.0.0.1:10221: connect: connection refused
+  * [/ip4/10.1.0.52/tcp/10221] dial tcp4 0.0.0.0:62004->10.1.0.52:10221: i/o timeout
+2022/03/16 18:22:31 - Connected to {12D3KooWBHvsSSKHeragACma3HUodK5FcPUpXccLu2vHooNsDf9k: [/ip6/2604:1380:45f1:8400::9/tcp/4001 /ip4/147.75.62.95/tcp/4001 /ip6/2604:1380:45f1:8400::9/tcp/4002/ws /ip4/147.75.62.95/tcp/4002/ws]}
+2022/03/16 18:22:32 - Connected to {12D3KooWHXKaRAKgQbPNqgpJwojmcHUajSFnQvHdKjPRbVHRhobC: [/ip4/147.75.108.229/tcp/4001 /ip4/147.75.108.229/tcp/4002/ws /ip6/2604:1380:45e2:e600::5/tcp/4001 /ip6/2604:1380:45e2:e600::5/tcp/4002/ws]}
+2022/03/16 18:22:33 - Connected to {12D3KooWLSMVRxtFrRWofS6MjysgWnPh7iiFEGYeEAeBQceNrf4G: [/ip4/147.75.108.191/tcp/4001 /ip4/147.75.108.191/tcp/4002/ws /ip6/2604:1380:45e2:e600::7/tcp/4001 /ip6/2604:1380:45e2:e600::7/tcp/4002/ws]}
+2022/03/16 18:22:33 - Connected to {QmcUAcMXJYZSs88baRiLa1dbMtVJ8BBtHCmDRpVFekTc1k: [/ip4/192.168.18.16/tcp/61077 /ip4/127.0.0.1/tcp/61077 /ip4/218.212.75.72/tcp/63915]}
+2022/03/16 18:22:35 - Connected to {12D3KooWBnmsaeNRP6SCdNbhzaNHihQQBPDhmDvjVGsR1EbswncV: [/ip6/2604:1380:4601:bf00::1/tcp/4002/ws /ip4/147.75.87.85/tcp/4001 /ip4/147.75.87.85/tcp/4002/ws /ip6/2604:1380:4601:bf00::1/tcp/4001]}
