@@ -37,6 +37,9 @@ func makeRoutedHost(ctx context.Context, serviceName string) (host.Host, error) 
 		libp2p.ListenAddrStrings(fmt.Sprintf("/ip4/0.0.0.0/tcp/0")),
 		// Use the randomly generated keypair
 		libp2p.Identity(priv),
+		// Enable relay routings
+		libp2p.DefaultStaticRelays(),
+		libp2p.EnableAutoRelay(),
 		// support TLS connections
 		libp2p.DefaultSecurity,
 		// support datastore
