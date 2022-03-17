@@ -31,7 +31,12 @@
                         </div>
                         <div class="col-lg-6 hidden-sm text-right">
                             <a href="javascript:void(0);" class="btn btn-outline-secondary"><i class="fa fa-camera"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
+                            <!-- <a href="javascript:void(0);" class="btn btn-outline-primary" onclick="send_image()"><i class="fa fa-image"></i></a> -->
+
+                            <!-- This allows the user to select a file from their system to send in the chat -->
+                            <label for="file-selector" class="btn btn-outline-primary"><i class="fa fa-image"></i></label>
+                            <input type="file" name="" id="file-selector" style="display: none;visibility: none;" onchange="send_image(this.value)">
+
                             <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
                             <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
                         </div>
@@ -114,6 +119,13 @@
         appendLog(item);
     }
   };
+
+  function send_image(image_name) {
+    // https://www.youtube.com/watch?v=dvyvikylNmI
+    // alert("ALERT: YOU CLICKED ON SOMETHING!");
+    var new_image = image_name.replace(/^.*\\/,"");
+    console.log(new_image);
+  }
 
   function send_message() {
     console.log("Sending message: " + msg.value);
