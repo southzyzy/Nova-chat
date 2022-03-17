@@ -9,6 +9,9 @@ import (
 	"path/filepath"
 	"time"
 
+	"net/http"
+	"github.com/gorilla/mux"
+
 	"github.com/libp2p/go-libp2p-core/peer"
 	pubsub "github.com/libp2p/go-libp2p-pubsub"
 )
@@ -19,7 +22,7 @@ func main() {
 	currentTime := time.Now()
 	logname := fmt.Sprintf("%s.txt", currentTime.Format("2006-01-02")) // yyyy-MM-dd
 
-	// Check for log directory 
+	// Check for log directory
 	logpath := filepath.Join(".", "logs")
 	err := os.MkdirAll(logpath, os.ModePerm)
 	if err != nil {
@@ -32,17 +35,18 @@ func main() {
 		log.Fatalf("error opening file: %v", err)
 	}
 	defer f.Close()
-	// Set Log output to file 
+	// Set Log output to file
 	log.SetOutput(f)
 
 	// parse some flags to set our nickname and the room to join
 	nickFlag := flag.String("nick", "", "nickname to use in chat. will be generated if empty")
 	topicFlag := flag.String("topic", "/nova-chat-topic/1.0", "topic to subscribe")
+	webuiFlag := flag.Bool("webui", false, "flag to run web ui")
 	flag.Parse()
 
 	ctx := context.Background()
 
-	// Retrieve the topic name 
+	// Retrieve the topic name
 	protoTopicName := *topicFlag
 
 	// Start routed host
@@ -70,10 +74,19 @@ func main() {
 		panic(err)
 	}
 
-	// draw the UI
-	ui := NewChatUI(cr)
-	if err = ui.Run(); err != nil {
-		printErr("error running text UI: %s", err)
+	// Detects if webui is enabled
+	if *webuiFlag {
+		fmt.Println("[*] Web UI flag detected, running web ui...")
+		fmt.Println("Starting server on http://localhost:8080/chat")
+		r := newRouter(cr)
+		http.ListenAndServe(":8080", r)
+	} else {
+		fmt.Println("[*] Running terminal UI...")
+		// draw the UI
+		ui := NewChatUI(cr)
+		if err = ui.Run(); err != nil {
+			printErr("error running text UI: %s", err)
+		}
 	}
 }
 
@@ -92,4 +105,24 @@ func defaultNick(p peer.ID) string {
 func shortID(p peer.ID) string {
 	pretty := p.Pretty()
 	return pretty[len(pretty)-8:]
+}
+
+// Router for web ui
+func newRouter(cr *ChatRoom) *mux.Router {
+	r := mux.NewRouter()
+
+  chatFileDirectory := http.Dir("./chat/")
+  chatFileHandler := http.StripPrefix("/chat/", http.FileServer(chatFileDirectory))
+  r.PathPrefix("/chat/").Handler(chatFileHandler).Methods("POST")
+
+  // Handler for websocket
+  r.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
+		cr.websocketHandler(w, r)
+	})
+
+  // Handler for the chat
+  r.HandleFunc("/", cr.chatHandler).Methods("GET")
+  r.HandleFunc("/chat", cr.chatHandler).Methods("GET")
+
+	return r
 }

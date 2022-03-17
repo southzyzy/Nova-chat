@@ -7,7 +7,36 @@ import (
 	"github.com/libp2p/go-libp2p-core/peer"
 
 	pubsub "github.com/libp2p/go-libp2p-pubsub"
+
+	"fmt"
+  "time"
+  "bytes"
+  "net/http"
+  "html/template"
+	"github.com/gorilla/websocket"
 )
+
+const (
+	// Time allowed to write a message to the peer.
+	writeWait = 10 * time.Second
+	// Time allowed to read the next pong message from the peer.
+	pongWait = 60 * time.Second
+	// Send pings to peer with this period. Must be less than pongWait.
+	// pingPeriod = (pongWait * 9) / 10
+	pingPeriod = 10 * time.Second
+	// Maximum message size allowed from peer.
+	maxMessageSize = 512
+)
+
+var (
+	newline = []byte{'\n'}
+	space   = []byte{' '}
+)
+
+var upgrader = websocket.Upgrader{
+    ReadBufferSize:  1024,
+    WriteBufferSize: 1024,
+}
 
 // ChatRoomBufSize is the number of incoming messages to buffer for each topic.
 const ChatRoomBufSize = 128
@@ -72,16 +101,18 @@ func JoinChatRoom(ctx context.Context, ps *pubsub.PubSub, selfID peer.ID, nickna
 func (cr *ChatRoom) Publish(message string) error {
 	// Encrypt the plaintext message
 	ciphertext := aesEncrypt(cr.roomName, message)
-	
+
 	m := ChatMessage{
 		Message:    ciphertext,
 		SenderID:   cr.self.Pretty(),
 		SenderNick: cr.nick,
 	}
+
 	msgBytes, err := json.Marshal(m)
 	if err != nil {
 		return err
 	}
+
 	return cr.topic.Publish(cr.ctx, msgBytes)
 }
 
@@ -113,4 +144,96 @@ func (cr *ChatRoom) readLoop() {
 
 func topicName(roomName string) string {
 	return "nova-chat-room:" + roomName
+}
+
+
+// ##################################################################################################################################
+// Web sockets
+// ##################################################################################################################################
+
+func (cr *ChatRoom) readRelay(conn *websocket.Conn) {
+  conn.SetReadLimit(maxMessageSize)
+  conn.SetReadDeadline(time.Now().Add(pongWait))
+  conn.SetPongHandler(func(string) error { conn.SetReadDeadline(time.Now().Add(pongWait)); return nil })
+
+  for {
+    _, message, err := conn.ReadMessage()
+    if err != nil {
+      if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
+        fmt.Printf("error: %v", err)
+      }
+      break
+    }
+
+    message = bytes.TrimSpace(bytes.Replace(message, newline, space, -1))
+    fmt.Println("Message from client (web): " + string(message))
+		cr.Publish(string(message))
+  }
+}
+
+func (cr *ChatRoom) writeRelay(conn *websocket.Conn){
+  ticker := time.NewTicker(pingPeriod)
+  fmt.Printf("[*] Ticker for ping interval initialised every %d seconds\n", pingPeriod/time.Second)
+
+  message := ChatMessage{
+    Message: "PingMessage",
+    SenderID: "xxxxxxxx",
+    SenderNick: "Nova-Chat-Server",
+  }
+
+  // Convert object to byte array using json.Marshal
+  jsonMsg, err := json.Marshal(message)
+	if err != nil {
+		panic(err)
+	}
+
+	for {
+		select {
+			case m := <- cr.Messages:
+				plaintext := aesDecrypt(cr.roomName, m.Message)
+				// fmt.Fprintf(ui.msgW, "%s %s\n", prompt, plaintext)
+
+				fmt.Println("Message from interweb (peers): " + plaintext)
+	      if err:= conn.WriteMessage(websocket.TextMessage, []byte(plaintext)); err != nil {
+	        panic(err)
+	        return
+	      }
+
+			case <-ticker.C:
+				conn.SetWriteDeadline(time.Now().Add(writeWait))
+				if err := conn.WriteMessage(websocket.PingMessage, nil); err != nil {
+	        panic(err)
+	        return
+				}
+
+				peers := cr.ListPeers()
+				fmt.Println("Peers: ", peers)
+
+				if err:= conn.WriteMessage(websocket.TextMessage, []byte(jsonMsg)); err != nil {
+					panic(err)
+					return
+				}
+		}
+	}
+}
+
+func (cr *ChatRoom) websocketHandler(w http.ResponseWriter, r *http.Request) {
+  // Upgrade connection to websocket connection
+  conn, err := upgrader.Upgrade(w, r, nil)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+  go cr.readRelay(conn)
+  go cr.writeRelay(conn)
+}
+
+
+// Handler to respond to "GET" requests, most likely used to retrieve chat messages
+func (cr *ChatRoom) chatHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("chatHandler", string(cr.roomName))
+  // Data (Chatroom) to send to webpage (chat/index.html)
+  t, _ := template.ParseFiles("chat/index.html")
+  t.Execute(w, string(cr.roomName))
 }
