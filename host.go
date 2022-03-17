@@ -12,7 +12,7 @@ import (
 	"github.com/libp2p/go-libp2p-core/host"
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"github.com/libp2p/go-libp2p-core/peerstore"
-	
+
 	ds "github.com/ipfs/go-datastore"
 	dsync "github.com/ipfs/go-datastore/sync"
 	dht "github.com/libp2p/go-libp2p-kad-dht"
@@ -21,7 +21,7 @@ import (
 	discovery "github.com/libp2p/go-libp2p-discovery"
 )
 
-// Func to make routed host 
+// Func to make routed host
 func makeRoutedHost(ctx context.Context, serviceName string) (host.Host, error) {
 	r := rand.Reader
 
@@ -46,6 +46,8 @@ func makeRoutedHost(ctx context.Context, serviceName string) (host.Host, error) 
 		// This service is highly rate-limited and should not cause any
 		// performance issues.
 		libp2p.EnableNATService(),
+		libp2p.DefaultStaticRelays(),
+		libp2p.EnableAutoRelay(),
 	}
 
 	// create a new libp2p Host that listens on a random TCP port
@@ -63,7 +65,7 @@ func makeRoutedHost(ctx context.Context, serviceName string) (host.Host, error) 
 	// DHT, so that the bootstrapping node of the DHT can go down without
 	// inhibiting future peer discovery.
 	kaddht := dht.NewDHT(ctx, h, dstore)
-	
+
 	// Make the routed host
 	routedHost := rhost.Wrap(h, kaddht)
 

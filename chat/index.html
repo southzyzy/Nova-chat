@@ -25,7 +25,7 @@
                                 <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
                             </a>
                             <div class="chat-about">
-                                <h6 class="m-b-0">{{ .roomName }}</h6>
+                                <h6 class="m-b-0"> {{ . }} </h6>
                                 <small>Last seen: 2 hours ago</small>
                             </div>
                         </div>
@@ -39,21 +39,6 @@
                 </div>
                 <div class="chat-history">
                     <ul class="m-b-0" id="chat-history">
-
-                        <li class="clearfix">
-                            <div class="message-data text-right">
-                                <span class="message-data-time">{{ .nick }}}</span>
-                                <!-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar"> -->
-                            </div>
-                            <div class="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
-                        </li>
-
-                        <li class="clearfix">
-                            <div class="message-data">
-                                <span class="message-data-time">Tom Holland</span>
-                            </div>
-                            <div class="message my-message">Are we meeting today?</div>
-                        </li>
 
                     </ul>
                 </div>
@@ -84,7 +69,6 @@
 
   window.onload = function () {
 
-
     document.getElementById("message_form").onsubmit = function () {
         if (!conn) {
             console.log("Form submit detected, no connection!")
@@ -112,11 +96,12 @@
         // Upon receiving message from server
         conn.onmessage = function (evt) {
             var message = evt.data.split('\n');
-            // Error here
-            console.log(message, typeof(message));
-            jsonMsg = JSON.parse(message[0]);
 
-            console.log("Received message: " + JSON.stringify(jsonMsg));
+            // Error here
+            console.log(message);
+            jsonMsg = JSON.parse(message);
+
+            // console.log("Received message: " + JSON.stringify(jsonMsg));
 
             receive_message(jsonMsg);
             // for (var i = 0; i < messages.length; i++) {

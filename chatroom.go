@@ -28,9 +28,10 @@ const (
 	maxMessageSize = 512
 )
 
-type TemplateData struct {
+type ChatRoomData struct {
 	roomName string
 	nick string
+	self peer.ID
 }
 
 var (
@@ -133,10 +134,12 @@ func (cr *ChatRoom) readLoop() {
 			close(cr.Messages)
 			return
 		}
+
 		// only forward messages delivered by others
 		if msg.ReceivedFrom == cr.self {
 			continue
 		}
+
 		cm := new(ChatMessage)
 		err = json.Unmarshal(msg.Data, cm)
 		if err != nil {
@@ -180,26 +183,38 @@ func (cr *ChatRoom) writeRelay(conn *websocket.Conn){
   ticker := time.NewTicker(pingPeriod)
   fmt.Printf("[*] Ticker for ping interval initialised every %d seconds\n", pingPeriod/time.Second)
 
-  message := ChatMessage{
-    Message: "PingMessage",
-    SenderID: "xxxxxxxx",
-    SenderNick: "Nova-Chat-Server",
-  }
-
-  // Convert object to byte array using json.Marshal
-  jsonMsg, err := json.Marshal(message)
-	if err != nil {
-		panic(err)
-	}
+  // message := ChatMessage{
+  //   Message: "PingMessage",
+  //   SenderID: "xxxxxxxx",
+  //   SenderNick: "Nova-Chat-Server",
+  // }
+	//
+  // // Convert object to byte array using json.Marshal
+  // jsonMsg, err := json.Marshal(message)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
 	for {
 		select {
 			case m := <- cr.Messages:
 				plaintext := aesDecrypt(cr.roomName, m.Message)
-				// fmt.Fprintf(ui.msgW, "%s %s\n", prompt, plaintext)
 
-				fmt.Println("Message from interweb (peers): " + plaintext)
-	      if err:= conn.WriteMessage(websocket.TextMessage, []byte(plaintext)); err != nil {
+				fmt.Println("Message from interweb (" + m.SenderNick + "): " + plaintext)
+
+				message := ChatMessage{
+					Message: plaintext,
+					SenderID: "xxxxxxxx",
+					SenderNick: m.SenderNick,
+				}
+
+				// Convert object to byte array using json.Marshal
+			  jsonMsg, err := json.Marshal(message)
+				if err != nil {
+					panic(err)
+				}
+
+	      if err:= conn.WriteMessage(websocket.TextMessage, []byte(jsonMsg)); err != nil {
 	        panic(err)
 	        return
 	      }
@@ -213,11 +228,6 @@ func (cr *ChatRoom) writeRelay(conn *websocket.Conn){
 
 				peers := cr.ListPeers()
 				fmt.Println("Peers: ", peers)
-
-				if err:= conn.WriteMessage(websocket.TextMessage, []byte(jsonMsg)); err != nil {
-					panic(err)
-					return
-				}
 		}
 	}
 }
@@ -235,12 +245,16 @@ func (cr *ChatRoom) websocketHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 
-// Handler to respond to "GET" requests, most likely used to retrieve chat messages
 func (cr *ChatRoom) chatHandler(w http.ResponseWriter, r *http.Request) {
-	// fmt.Println("chatHandler", string(cr.roomName))
+	fmt.Println("chatHandler", string(cr.roomName))
 
-	data := TemplateData{roomName: cr.roomName, nick: cr.nick}
+	// data := ChatRoomData{
+	// 	roomName: cr.roomName,
+	// 	nick: cr.nick,
+	// 	self: cr.self,
+	// }
+
   // Data (Chatroom) to send to webpage (chat/index.html)
   t, _ := template.ParseFiles("chat/index.html")
-  t.Execute(w, data)
+  t.Execute(w, cr.roomName)
 }
