@@ -1487,3 +1487,93 @@
 2022/03/17 14:31:58 - Error connecting to {QmRGWchXyvTBrREQxgz6aWaHRifunEEGYXHrnrPq9jXow9: [/ip4/172.16.157.135/tcp/44579 /ip4/127.0.0.1/tcp/44579]}: failed to dial QmRGWchXyvTBrREQxgz6aWaHRifunEEGYXHrnrPq9jXow9:
   * [/ip4/127.0.0.1/tcp/44579] dial tcp4 127.0.0.1:44579: connect: connection refused
   * [/ip4/172.16.157.135/tcp/44579] dial tcp4 0.0.0.0:49600->172.16.157.135:44579: i/o timeout
+2022/03/17 14:34:11 QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/17 14:34:11 QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/17 14:34:11 QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/17 14:34:11 QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/17 14:34:11 QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/17 14:34:11 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/17 14:34:11 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/17 14:34:11 context.Background bootstrapDial QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/17 14:34:11 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/17 14:34:11 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/17 14:34:11 context.Background bootstrapDial QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/17 14:34:12 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/17 14:34:12 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/17 14:34:12 context.Background bootstrapDial QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/17 14:34:16 QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/17 14:34:16 QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/17 14:34:16 QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/17 14:34:16 QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/17 14:34:16 QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/17 14:34:16 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/17 14:34:16 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/17 14:34:16 context.Background bootstrapDial QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/17 14:34:16 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/17 14:34:16 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/17 14:34:16 context.Background bootstrapDial QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/17 14:34:16 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/17 14:34:16 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/17 14:34:16 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/17 14:34:16 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/17 14:34:16 context.Background bootstrapDial QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/17 14:34:16 context.Background bootstrapDial QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/17 14:34:16 Annoucing with DHT ...
+2022/03/17 14:34:16 Successfully accounced with DHT !
+2022/03/17 14:34:16 Searching for other peers...
+2022/03/17 14:34:16 I can be reached at:
+2022/03/17 14:34:16 /ip4/192.168.1.131/tcp/50613/p2p/QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN
+2022/03/17 14:34:16 /ip4/127.0.0.1/tcp/50613/p2p/QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN
+2022/03/17 14:34:16 /ip4/10.59.2.182/tcp/33928/p2p/QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN
+2022/03/17 14:34:16 My CID: QmPefxXwkKecoT76rFVVU3tHgcMKBD8MbdkYGkfG2x2geN
+2022/03/17 14:34:16 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/17 14:34:16 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/17 14:34:16 context.Background bootstrapDial QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/17 14:34:17 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/17 14:34:17 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/17 14:34:17 context.Background bootstrapDial QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/17 14:34:21 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/17 14:34:21 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/17 14:34:21 context.Background bootstrapDial QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/17 14:34:21 Annoucing with DHT ...
+2022/03/17 14:34:21 Successfully accounced with DHT !
+2022/03/17 14:34:21 Searching for other peers...
+2022/03/17 14:34:21 I can be reached at:
+2022/03/17 14:34:21 /ip4/192.168.1.131/tcp/50741/p2p/QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV
+2022/03/17 14:34:21 /ip4/127.0.0.1/tcp/50741/p2p/QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV
+2022/03/17 14:34:21 /ip4/10.59.2.182/tcp/31814/p2p/QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV
+2022/03/17 14:34:21 My CID: QmYnGsh3JsJoWgptVsjUPC4PxbewTUNUdJHPHpcbFHoBDV
+2022/03/17 14:34:22 - Error connecting to {QmXVzYwtJB6s3t7czbq7FzhATYr52rA6YwEk7zvgWcLYAt: [/ip4/172.20.10.2/tcp/52773 /ip4/127.0.0.1/tcp/52773]}: failed to dial QmXVzYwtJB6s3t7czbq7FzhATYr52rA6YwEk7zvgWcLYAt:
+  * [/ip4/127.0.0.1/tcp/52773] dial tcp4 127.0.0.1:52773: connect: connection refused
+  * [/ip4/172.20.10.2/tcp/52773] dial tcp4 0.0.0.0:50613->172.20.10.2:52773: i/o timeout
+2022/03/17 14:34:27 - Error connecting to {QmXVzYwtJB6s3t7czbq7FzhATYr52rA6YwEk7zvgWcLYAt: [/ip4/172.20.10.2/tcp/52773 /ip4/127.0.0.1/tcp/52773]}: failed to dial QmXVzYwtJB6s3t7czbq7FzhATYr52rA6YwEk7zvgWcLYAt:
+  * [/ip4/127.0.0.1/tcp/52773] dial tcp4 127.0.0.1:52773: connect: connection refused
+  * [/ip4/172.20.10.2/tcp/52773] dial tcp4 0.0.0.0:50741->172.20.10.2:52773: i/o timeout
+2022/03/17 14:46:27 QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3 bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/17 14:46:27 QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3 bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/17 14:46:27 QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3 bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/17 14:46:27 QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3 bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/17 14:46:27 QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3 bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/17 14:46:28 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/17 14:46:28 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/17 14:46:28 context.Background bootstrapDial QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3 QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/17 14:46:28 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/17 14:46:28 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/17 14:46:28 context.Background bootstrapDial QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3 QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/17 14:46:28 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/17 14:46:28 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/17 14:46:28 context.Background bootstrapDial QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3 QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/17 14:46:28 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/17 14:46:28 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/17 14:46:28 context.Background bootstrapDial QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3 QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/17 14:46:33 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/17 14:46:33 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/17 14:46:33 context.Background bootstrapDial QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3 QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/17 14:46:33 Annoucing with DHT ...
+2022/03/17 14:46:33 Successfully accounced with DHT !
+2022/03/17 14:46:33 Searching for other peers...
+2022/03/17 14:46:33 I can be reached at:
+2022/03/17 14:46:33 /ip4/192.168.1.131/tcp/53627/p2p/QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3
+2022/03/17 14:46:33 /ip4/127.0.0.1/tcp/53627/p2p/QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3
+2022/03/17 14:46:33 /ip4/10.59.2.182/tcp/19350/p2p/QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3
+2022/03/17 14:46:33 My CID: QmaNT7KkuK2pk4KXdto39SDtTrdAwQr381vtBwaKKVwfm3

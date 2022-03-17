@@ -28,6 +28,11 @@ const (
 	maxMessageSize = 512
 )
 
+type TemplateData struct {
+	roomName string
+	nick string
+}
+
 var (
 	newline = []byte{'\n'}
 	space   = []byte{' '}
@@ -232,8 +237,10 @@ func (cr *ChatRoom) websocketHandler(w http.ResponseWriter, r *http.Request) {
 
 // Handler to respond to "GET" requests, most likely used to retrieve chat messages
 func (cr *ChatRoom) chatHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("chatHandler", string(cr.roomName))
+	// fmt.Println("chatHandler", string(cr.roomName))
+
+	data := TemplateData{roomName: cr.roomName, nick: cr.nick}
   // Data (Chatroom) to send to webpage (chat/index.html)
   t, _ := template.ParseFiles("chat/index.html")
-  t.Execute(w, string(cr.roomName))
+  t.Execute(w, data)
 }
