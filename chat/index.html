@@ -35,7 +35,8 @@
 
                             <!-- This allows the user to select a file from their system to send in the chat -->
                             <label for="file-selector" class="btn btn-outline-primary"><i class="fa fa-image"></i></label>
-                            <input type="file" name="" id="file-selector" style="display: none;visibility: none;" onchange="send_image(this.value)">
+                            <input type="file" name="" id="file-selector" style="display: none;visibility: none;" accept=".jpeg">
+                            <input type="hidden" name="" id="jpegAttachment">
 
                             <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
                             <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
@@ -71,6 +72,22 @@
   var conn;
   var msg = document.getElementById("message");
   var chat_box = document.getElementById("chat-history");
+
+  // use this function to send an image to the server as a base64 string
+  $(document).ready(function () {
+    $('#file-selector').on('change', function(e) {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            var inputData = reader.result;
+            var replaceValue = (inputData.split(',')[0]);
+            var base64String = inputData.replace(replaceValue + ",","");
+
+            console.log(base64String);
+        }
+    }); 
+  });
 
   window.onload = function () {
 
@@ -120,12 +137,6 @@
     }
   };
 
-  function send_image(image_name) {
-    // https://www.youtube.com/watch?v=dvyvikylNmI
-    // alert("ALERT: YOU CLICKED ON SOMETHING!");
-    var new_image = image_name.replace(/^.*\\/,"");
-    console.log(new_image);
-  }
 
   function send_message() {
     console.log("Sending message: " + msg.value);
