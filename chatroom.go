@@ -28,12 +28,6 @@ const (
 	maxMessageSize = 512
 )
 
-type ChatRoomData struct {
-	roomName string
-	nick string
-	self peer.ID
-}
-
 var (
 	newline = []byte{'\n'}
 	space   = []byte{' '}
@@ -222,6 +216,7 @@ func (cr *ChatRoom) writeRelay(conn *websocket.Conn){
 			case <-ticker.C:
 				conn.SetWriteDeadline(time.Now().Add(writeWait))
 				if err := conn.WriteMessage(websocket.PingMessage, nil); err != nil {
+					fmt.Println("Websocket connection closed!")
 	        panic(err)
 	        return
 				}
@@ -248,13 +243,9 @@ func (cr *ChatRoom) websocketHandler(w http.ResponseWriter, r *http.Request) {
 func (cr *ChatRoom) chatHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("chatHandler", string(cr.roomName))
 
-	// data := ChatRoomData{
-	// 	roomName: cr.roomName,
-	// 	nick: cr.nick,
-	// 	self: cr.self,
-	// }
+	data := map[string]interface{}{"roomName" : cr.roomName, "nick": cr.nick, "nova_img" : "images/nova_chat.png"}
 
   // Data (Chatroom) to send to webpage (chat/index.html)
   t, _ := template.ParseFiles("chat/index.html")
-  t.Execute(w, cr.roomName)
+  t.Execute(w, data)
 }

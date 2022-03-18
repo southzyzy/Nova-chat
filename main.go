@@ -111,9 +111,9 @@ func shortID(p peer.ID) string {
 func newRouter(cr *ChatRoom) *mux.Router {
 	r := mux.NewRouter()
 
-  chatFileDirectory := http.Dir("./chat/")
-  chatFileHandler := http.StripPrefix("/chat/", http.FileServer(chatFileDirectory))
-  r.PathPrefix("/chat/").Handler(chatFileHandler).Methods("POST")
+  chatFileDirectory := http.Dir("./images/")
+  chatFileHandler := http.StripPrefix("/images/", http.FileServer(chatFileDirectory))
+  r.PathPrefix("/images/").Handler(chatFileHandler).Methods("GET")
 
   // Handler for websocket
   r.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
