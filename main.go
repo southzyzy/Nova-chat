@@ -50,6 +50,9 @@ func main() {
 	topicFlag := flag.String("topic", "/nova-chat-topic/1.0", "topic to subscribe")
 	webuiFlag := flag.Bool("webui", false, "flag to run web ui")
 	httpFlag := flag.Bool("http", false, "flag to run web ui in HTTP, default is HTTPS")
+
+	keyFlag := flag.String("key", "", "self-signed certificate")
+	certFlag := flag.String("cert", "", "self-signed key")
 	flag.Parse()
 
 	ctx := context.Background()
@@ -95,7 +98,6 @@ func main() {
 			http.ListenAndServe(":" + http_port, r)
 		} else {
 			fmt.Println("[*] Starting server on https://localhost:" + https_port + "/chat")
-
 			// Listen and server http listener solely to redirect requests to https
 			// go http.ListenAndServe(":" + http_port, http.HandlerFunc(httpsRedirect))
 
