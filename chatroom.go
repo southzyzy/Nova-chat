@@ -8,6 +8,8 @@ import (
 
 	pubsub "github.com/libp2p/go-libp2p-pubsub"
 
+	"github.com/microcosm-cc/bluemonday"
+
 	"fmt"
   "time"
   "bytes"
@@ -31,6 +33,8 @@ const (
 var (
 	newline = []byte{'\n'}
 	space   = []byte{' '}
+	// Declare policy for sanitising user input
+	sanitisation_policy = bluemonday.UGCPolicy()
 )
 
 var upgrader = websocket.Upgrader{
@@ -150,69 +154,94 @@ func topicName(roomName string) string {
 
 
 // ##################################################################################################################################
-// Web sockets
+// Web sockets stuffs
 // ##################################################################################################################################
 
-func (cr *ChatRoom) readRelay(conn *websocket.Conn) {
+func (cr *ChatRoom) readFromSocket(conn *websocket.Conn) {
+
   conn.SetReadLimit(maxMessageSize)
   conn.SetReadDeadline(time.Now().Add(pongWait))
   conn.SetPongHandler(func(string) error { conn.SetReadDeadline(time.Now().Add(pongWait)); return nil })
 
   for {
-    _, message, err := conn.ReadMessage()
+		// Read websocket message
+    _, websocket_message, err := conn.ReadMessage()
     if err != nil {
       if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
-        fmt.Printf("error: %v", err)
+        fmt.Printf("Error reading websocket message: %v", err)
       }
       break
     }
 
-    message = bytes.TrimSpace(bytes.Replace(message, newline, space, -1))
-    fmt.Println("Message from client (web): " + string(message))
-		cr.Publish(string(message))
+		// Parse the message
+    websocket_message = bytes.TrimSpace(bytes.Replace(websocket_message, newline, space, -1))
+
+		// Sanitise the message with bluemonday
+		sanitised_message := sanitisation_policy.Sanitize(string(websocket_message))
+
+		// Detect if there is a change after sanitisation
+		if string(websocket_message) != string(sanitised_message) {
+			fmt.Println("Caught unsanitised message: ", string(websocket_message))
+		} else {
+			// Prints sanitised message
+			fmt.Println("Message from client: " + string(sanitised_message))
+		}
+
+		// If sanitised_message not empty
+		if len(sanitised_message) > 0 {
+			// Publish message to pubsub topic
+			cr.Publish(string(sanitised_message))
+		}
+
   }
 }
 
-func (cr *ChatRoom) writeRelay(conn *websocket.Conn){
+func (cr *ChatRoom) writeToSocket(conn *websocket.Conn){
+	// Initialise timer for ping-pong
   ticker := time.NewTicker(pingPeriod)
-  fmt.Printf("[*] Ticker for ping interval initialised every %d seconds\n", pingPeriod/time.Second)
+  fmt.Printf("[*] Ticker for ping-pong interval initialised every %d seconds\n", pingPeriod/time.Second)
 
-  // message := ChatMessage{
-  //   Message: "PingMessage",
-  //   SenderID: "xxxxxxxx",
-  //   SenderNick: "Nova-Chat-Server",
-  // }
-	//
-  // // Convert object to byte array using json.Marshal
-  // jsonMsg, err := json.Marshal(message)
-	// if err != nil {
-	// 	panic(err)
-	// }
+	var message ChatMessage
+	var peerlist []peer.ID
 
 	for {
 		select {
+			// Upon a new message received
 			case m := <- cr.Messages:
+				// Decrypt message
 				plaintext := aesDecrypt(cr.roomName, m.Message)
 
-				fmt.Println("Message from interweb (" + m.SenderNick + "): " + plaintext)
+				// Sanitise the message with bluemonday
+				sanitised_plaintext := sanitisation_policy.Sanitize(string(plaintext))
 
-				message := ChatMessage{
+				// Detect if there is a change after sanitisation
+				if string(plaintext) != string(sanitised_plaintext) {
+					fmt.Println("Caught unsanitised message: (" + m.SenderNick + ") [" + m.SenderID + "]: ", string(plaintext))
+				} else {
+					// Prints sanitised message
+					fmt.Println("Message from interweb (" + m.SenderNick + ") [" + m.SenderID + "]: " + string(sanitised_plaintext))
+				}
+
+				// ChatMessage object
+				message = ChatMessage{
 					Message: plaintext,
-					SenderID: "xxxxxxxx",
+					SenderID: m.SenderID,
 					SenderNick: m.SenderNick,
 				}
 
-				// Convert object to byte array using json.Marshal
+				// Convert message object to byte array using json.Marshal
 			  jsonMsg, err := json.Marshal(message)
 				if err != nil {
 					panic(err)
 				}
 
+				// Write message to websocket connection (send to web ui)
 	      if err:= conn.WriteMessage(websocket.TextMessage, []byte(jsonMsg)); err != nil {
 	        panic(err)
 	        return
 	      }
 
+			// Upon ping-pong interval
 			case <-ticker.C:
 				conn.SetWriteDeadline(time.Now().Add(writeWait))
 				if err := conn.WriteMessage(websocket.PingMessage, nil); err != nil {
@@ -221,8 +250,12 @@ func (cr *ChatRoom) writeRelay(conn *websocket.Conn){
 	        return
 				}
 
-				peers := cr.ListPeers()
-				fmt.Println("Peers: ", peers)
+				curr_peers := cr.ListPeers()
+				if Equal(peerlist, curr_peers) == false {
+						fmt.Println("Peers: ", curr_peers)
+						peerlist = curr_peers
+				}
+
 		}
 	}
 }
@@ -235,8 +268,9 @@ func (cr *ChatRoom) websocketHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-  go cr.readRelay(conn)
-  go cr.writeRelay(conn)
+	// Execute goroutines for both read and write socket connection operations
+  go cr.readFromSocket(conn)
+  go cr.writeToSocket(conn)
 }
 
 
@@ -248,4 +282,17 @@ func (cr *ChatRoom) chatHandler(w http.ResponseWriter, r *http.Request) {
   // Data (Chatroom) to send to webpage (chat/index.html)
   t, _ := template.ParseFiles("chat/index.html")
   t.Execute(w, data)
+}
+
+
+func Equal(a, b []peer.ID) bool {
+    if len(a) != len(b) {
+        return false
+    }
+    for i, v := range a {
+        if v != b[i] {
+            return false
+        }
+    }
+    return true
 }

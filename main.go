@@ -16,6 +16,13 @@ import (
 	pubsub "github.com/libp2p/go-libp2p-pubsub"
 )
 
+const ( //
+	// HTTP port
+	http_port = "80"
+	// HTTPS port
+	https_port = "443"
+)
+
 
 func main() {
 	// Set Logging Information
@@ -42,6 +49,7 @@ func main() {
 	nickFlag := flag.String("nick", "", "nickname to use in chat. will be generated if empty")
 	topicFlag := flag.String("topic", "/nova-chat-topic/1.0", "topic to subscribe")
 	webuiFlag := flag.Bool("webui", false, "flag to run web ui")
+	httpFlag := flag.Bool("http", false, "flag to run web ui in HTTP, default is HTTPS")
 	flag.Parse()
 
 	ctx := context.Background()
@@ -77,9 +85,30 @@ func main() {
 	// Detects if webui is enabled
 	if *webuiFlag {
 		fmt.Println("[*] Web UI flag detected, running web ui...")
-		fmt.Println("Starting server on http://localhost:8080/chat")
-		r := newRouter(cr)
-		http.ListenAndServe(":8080", r)
+
+		r := webuiRouter(cr)
+
+		// User specified to run webui in HTTP
+		if *httpFlag {
+			fmt.Println("Starting server on http://localhost:" + http_port + "/chat")
+
+			http.ListenAndServe(":" + http_port, r)
+		} else {
+			fmt.Println("Starting server on https://localhost:" + https_port + "/chat")
+
+			// Listen and server http listener solely to redirect requests to https
+			// go http.ListenAndServe(":" + http_port, http.HandlerFunc(httpsRedirect))
+
+			// openssl req -new -newkey rsa:2048 -nodes -keyout ssl/localhost.key -out ssl/localhost.csr
+			// openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt
+			if err := http.ListenAndServeTLS(":" + https_port, "ssl/localhost.crt", "ssl/localhost.key", r); err != nil {
+					fmt.Println("Error: ", err)
+					fmt.Println("Run the commands: \nopenssl req -new -newkey rsa:2048 -nodes -keyout ssl/localhost.key -out ssl/localhost.csr")
+					fmt.Println("and, ")
+					fmt.Println("openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt")
+			}
+		}
+
 	} else {
 		fmt.Println("[*] Running terminal UI...")
 		// draw the UI
@@ -107,8 +136,17 @@ func shortID(p peer.ID) string {
 	return pretty[len(pretty)-8:]
 }
 
+// httpsRedirect redirects http requests to https
+func httpsRedirect(w http.ResponseWriter, r *http.Request) {
+    http.Redirect(
+        w, r,
+        "https://"+r.Host+r.URL.String(),
+        http.StatusMovedPermanently,
+    )
+}
+
 // Router for web ui
-func newRouter(cr *ChatRoom) *mux.Router {
+func webuiRouter(cr *ChatRoom) *mux.Router {
 	r := mux.NewRouter()
 
   chatFileDirectory := http.Dir("./images/")

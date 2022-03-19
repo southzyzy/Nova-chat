@@ -13,6 +13,7 @@ require (
 	github.com/libp2p/go-libp2p-discovery v0.6.0
 	github.com/libp2p/go-libp2p-kad-dht v0.15.0
 	github.com/libp2p/go-libp2p-pubsub v0.6.0
+	github.com/microcosm-cc/bluemonday v1.0.1
 	github.com/multiformats/go-multiaddr v0.4.0
 	github.com/rivo/tview v0.0.0-20210125085121-dbc1f32bb1d0
 	golang.org/x/crypto v0.0.0-20210813211128-0a44fdfbc16e

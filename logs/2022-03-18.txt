@@ -434,3 +434,287 @@
 2022/03/18 19:52:35 /ip4/192.168.1.131/tcp/54771/p2p/QmNnyM1iF74Nhv5SKGKFrY8cc1pqYW418L1bq3YC4wLLNM
 2022/03/18 19:52:35 /ip4/10.59.2.182/tcp/41438/p2p/QmNnyM1iF74Nhv5SKGKFrY8cc1pqYW418L1bq3YC4wLLNM
 2022/03/18 19:52:35 My CID: QmNnyM1iF74Nhv5SKGKFrY8cc1pqYW418L1bq3YC4wLLNM
+2022/03/18 19:59:10 QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 19:59:10 QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 19:59:10 QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 19:59:10 QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 19:59:10 QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 19:59:10 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 19:59:10 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 19:59:10 context.Background bootstrapDial QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 19:59:10 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 19:59:10 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 19:59:10 context.Background bootstrapDial QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 19:59:11 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 19:59:11 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 19:59:11 context.Background bootstrapDial QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 19:59:15 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 19:59:15 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 19:59:15 context.Background bootstrapDial QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 19:59:15 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 19:59:15 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 19:59:15 context.Background bootstrapDial QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 19:59:15 Annoucing with DHT ...
+2022/03/18 19:59:15 Successfully accounced with DHT !
+2022/03/18 19:59:15 Searching for other peers...
+2022/03/18 19:59:15 I can be reached at:
+2022/03/18 19:59:15 /ip4/127.0.0.1/tcp/54977/p2p/QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG
+2022/03/18 19:59:15 /ip4/192.168.1.131/tcp/54977/p2p/QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG
+2022/03/18 19:59:15 My CID: QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG
+2022/03/18 19:59:22 http: TLS handshake error from [::1]:55258: remote error: tls: unknown certificate
+2022/03/18 19:59:27 http: TLS handshake error from [::1]:55285: remote error: tls: unknown certificate
+2022/03/18 19:59:34 - Error connecting to {Qmb7BbBT1MGNZr7bkwRdZe86xzNRM1shSKWqjDWYEZ7YR3: [/ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit /ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit /ip4/127.0.0.1/tcp/52578 /ip4/192.168.1.131/tcp/52578 /ip4/10.59.2.182/tcp/47759 /ip4/147.75.195.153/udp/4001/quic/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit /ip4/147.75.195.153/tcp/4001/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit]}: failed to dial Qmb7BbBT1MGNZr7bkwRdZe86xzNRM1shSKWqjDWYEZ7YR3:
+  * [/ip4/127.0.0.1/tcp/52578] dial tcp4 127.0.0.1:52578: connect: connection refused
+  * [/ip4/192.168.1.131/tcp/52578] dial tcp4 192.168.1.131:52578: connect: connection refused
+  * [/ip4/10.59.2.182/tcp/47759] dial tcp4 10.59.2.182:47759: connect: connection refused
+  * [/ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit] error opening relay circuit: HOP_NO_CONN_TO_DST (260)
+  * [/ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit] concurrent active dial through the same relay failed with a protocol error
+  * [/ip4/147.75.195.153/tcp/4001/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit] error opening relay circuit: HOP_NO_CONN_TO_DST (260)
+  * [/ip4/147.75.195.153/udp/4001/quic/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit] concurrent active dial through the same relay failed with a protocol error
+2022/03/18 19:59:53 QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 19:59:53 QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 19:59:53 QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 19:59:53 QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 19:59:53 QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 19:59:54 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 19:59:54 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 19:59:54 context.Background bootstrapDial QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 19:59:54 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 19:59:54 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 19:59:54 context.Background bootstrapDial QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 19:59:54 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 19:59:54 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 19:59:54 context.Background bootstrapDial QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 19:59:54 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 19:59:54 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 19:59:54 context.Background bootstrapDial QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 19:59:59 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 19:59:59 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 19:59:59 context.Background bootstrapDial QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 19:59:59 Annoucing with DHT ...
+2022/03/18 19:59:59 Successfully accounced with DHT !
+2022/03/18 19:59:59 Searching for other peers...
+2022/03/18 19:59:59 I can be reached at:
+2022/03/18 19:59:59 /ip4/127.0.0.1/tcp/55507/p2p/QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt
+2022/03/18 19:59:59 /ip4/192.168.1.131/tcp/55507/p2p/QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt
+2022/03/18 19:59:59 /ip4/147.75.195.153/udp/4001/quic/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit/p2p/QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt
+2022/03/18 19:59:59 /ip4/147.75.195.153/tcp/4001/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit/p2p/QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt
+2022/03/18 19:59:59 My CID: QmX1FGa214b5zbZetj7ZzkUb6Tu25UZoeudpMhV25PZLVt
+2022/03/18 20:00:00 http: TLS handshake error from [::1]:55647: remote error: tls: unknown certificate
+2022/03/18 20:00:05 - Error connecting to {QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG: [/ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit /ip4/147.75.195.153/tcp/4001/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit /ip4/147.75.195.153/udp/4001/quic/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit /ip4/127.0.0.1/tcp/54977 /ip4/192.168.1.131/tcp/54977 /ip4/10.59.2.182/tcp/33270 /ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit]}: failed to dial QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG:
+  * [/ip4/127.0.0.1/tcp/54977] dial tcp4 127.0.0.1:54977: connect: connection refused
+  * [/ip4/192.168.1.131/tcp/54977] dial tcp4 192.168.1.131:54977: connect: connection refused
+  * [/ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit] error opening relay circuit: HOP_NO_CONN_TO_DST (260)
+  * [/ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit] concurrent active dial through the same relay failed with a protocol error
+  * [/ip4/147.75.195.153/tcp/4001/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit] error opening relay circuit: HOP_NO_CONN_TO_DST (260)
+  * [/ip4/147.75.195.153/udp/4001/quic/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit] concurrent active dial through the same relay failed with a protocol error
+  * [/ip4/10.59.2.182/tcp/33270] dial tcp4 0.0.0.0:55507->10.59.2.182:33270: i/o timeout
+2022/03/18 20:01:13 QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25 bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 20:01:13 QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25 bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 20:01:13 QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25 bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 20:01:13 QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25 bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 20:01:13 QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25 bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 20:01:13 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 20:01:13 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 20:01:13 context.Background bootstrapDial QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25 QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 20:01:14 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 20:01:14 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 20:01:14 context.Background bootstrapDial QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25 QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 20:01:14 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 20:01:14 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 20:01:14 context.Background bootstrapDial QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25 QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 20:01:14 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 20:01:14 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 20:01:14 context.Background bootstrapDial QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25 QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 20:01:18 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 20:01:18 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 20:01:18 context.Background bootstrapDial QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25 QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 20:01:18 Annoucing with DHT ...
+2022/03/18 20:01:18 Successfully accounced with DHT !
+2022/03/18 20:01:18 Searching for other peers...
+2022/03/18 20:01:18 I can be reached at:
+2022/03/18 20:01:18 /ip4/127.0.0.1/tcp/56307/p2p/QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25
+2022/03/18 20:01:18 /ip4/192.168.1.131/tcp/56307/p2p/QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25
+2022/03/18 20:01:18 /ip4/10.59.2.182/tcp/58156/p2p/QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25
+2022/03/18 20:01:18 My CID: QmXs6NREjo74CJYW9cp3RoAiNMwHyYbqwDGrV83NrKCr25
+2022/03/18 20:01:26 http: TLS handshake error from [::1]:56610: remote error: tls: unknown certificate
+2022/03/18 20:01:27 http: TLS handshake error from [::1]:56634: remote error: tls: unknown certificate
+2022/03/18 20:02:19 - Error connecting to {QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG: [/ip4/127.0.0.1/tcp/54977 /ip4/192.168.1.131/tcp/54977 /ip4/10.59.2.182/tcp/33270 /ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit /ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit /ip4/147.75.195.153/tcp/4001/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit /ip4/147.75.195.153/udp/4001/quic/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit]}: failed to dial QmZnHWNWCecetXopCf5N145ms9oRRyyqFvUzU7kHg1hSUG:
+  * [/ip4/127.0.0.1/tcp/54977] dial tcp4 127.0.0.1:54977: connect: connection refused
+  * [/ip4/192.168.1.131/tcp/54977] dial tcp4 192.168.1.131:54977: connect: connection refused
+  * [/ip4/10.59.2.182/tcp/33270] dial tcp4 10.59.2.182:33270: connect: connection refused
+  * [/ip4/147.75.195.153/tcp/4001/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit] error opening relay circuit: HOP_NO_CONN_TO_DST (260)
+  * [/ip4/147.75.195.153/udp/4001/quic/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit] concurrent active dial through the same relay failed with a protocol error
+  * [/ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit] error opening relay circuit: HOP_NO_CONN_TO_DST (260)
+  * [/ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit] concurrent active dial through the same relay failed with a protocol error
+2022/03/18 20:53:30 QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 20:53:30 QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 20:53:30 QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 20:53:30 QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 20:53:30 QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 20:53:30 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 20:53:30 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 20:53:30 context.Background bootstrapDial QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 20:53:30 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 20:53:30 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 20:53:30 context.Background bootstrapDial QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 20:53:31 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 20:53:31 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 20:53:31 context.Background bootstrapDial QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 20:53:31 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 20:53:31 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 20:53:31 context.Background bootstrapDial QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 20:53:35 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 20:53:35 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 20:53:35 context.Background bootstrapDial QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 20:53:35 Annoucing with DHT ...
+2022/03/18 20:53:35 Successfully accounced with DHT !
+2022/03/18 20:53:35 Searching for other peers...
+2022/03/18 20:53:35 I can be reached at:
+2022/03/18 20:53:35 /ip4/127.0.0.1/tcp/63012/p2p/QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj
+2022/03/18 20:53:35 /ip4/192.168.1.131/tcp/63012/p2p/QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj
+2022/03/18 20:53:35 /ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit/p2p/QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj
+2022/03/18 20:53:35 /ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit/p2p/QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj
+2022/03/18 20:53:35 My CID: QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj
+2022/03/18 20:53:38 http: TLS handshake error from [::1]:63275: remote error: tls: unknown certificate
+2022/03/18 20:53:39 http: TLS handshake error from [::1]:63335: remote error: tls: unknown certificate
+2022/03/18 21:00:19 QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:00:19 QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:00:19 QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:00:19 QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:00:19 QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:00:20 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:00:20 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:00:20 context.Background bootstrapDial QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:00:20 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:00:20 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:00:20 context.Background bootstrapDial QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:00:20 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:00:20 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:00:20 context.Background bootstrapDial QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:00:20 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:00:20 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:00:20 context.Background bootstrapDial QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:00:25 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:00:25 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:00:25 context.Background bootstrapDial QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:00:25 Annoucing with DHT ...
+2022/03/18 21:00:25 Successfully accounced with DHT !
+2022/03/18 21:00:25 Searching for other peers...
+2022/03/18 21:00:25 I can be reached at:
+2022/03/18 21:00:25 /ip4/127.0.0.1/tcp/50160/p2p/QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR
+2022/03/18 21:00:25 /ip4/192.168.1.131/tcp/50160/p2p/QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR
+2022/03/18 21:00:25 /ip4/147.75.195.153/udp/4001/quic/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit/p2p/QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR
+2022/03/18 21:00:25 /ip4/147.75.195.153/tcp/4001/p2p/QmW9m57aiBDHAkKj9nmFSEn7ZqrcF1fZS4bipsTCHburei/p2p-circuit/p2p/QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR
+2022/03/18 21:00:25 My CID: QmYsCoPB32Aze74mDDhxaSK8j9uzsUPEHAz7jvu7sUCSSR
+2022/03/18 21:00:26 http: TLS handshake error from [::1]:50311: remote error: tls: unknown certificate
+2022/03/18 21:00:27 http: TLS handshake error from [::1]:50342: remote error: tls: unknown certificate
+2022/03/18 21:00:27 - Error connecting to {QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj: [/ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit /ip4/10.59.2.182/tcp/15123 /ip4/127.0.0.1/tcp/63012 /ip4/192.168.1.131/tcp/63012 /ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit]}: failed to dial QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj:
+  * [/ip4/192.168.1.131/tcp/63012] dial tcp4 192.168.1.131:63012: connect: connection refused
+  * [/ip4/127.0.0.1/tcp/63012] dial tcp4 127.0.0.1:63012: connect: connection refused
+  * [/ip4/10.59.2.182/tcp/15123] dial tcp4 10.59.2.182:15123: connect: connection refused
+  * [/ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit] error opening relay circuit: HOP_NO_CONN_TO_DST (260)
+  * [/ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit] concurrent active dial through the same relay failed with a protocol error
+2022/03/18 21:02:46 QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7 bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:02:46 QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7 bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:02:46 QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7 bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:02:46 QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7 bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:02:46 QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7 bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:02:46 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:02:46 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:02:46 context.Background bootstrapDial QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7 QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:02:46 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:02:46 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:02:46 context.Background bootstrapDial QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7 QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:02:46 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:02:46 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:02:46 context.Background bootstrapDial QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7 QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:02:46 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:02:46 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:02:46 context.Background bootstrapDial QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7 QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:02:47 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:02:47 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:02:47 context.Background bootstrapDial QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7 QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:02:47 Annoucing with DHT ...
+2022/03/18 21:02:47 Successfully accounced with DHT !
+2022/03/18 21:02:47 Searching for other peers...
+2022/03/18 21:02:47 I can be reached at:
+2022/03/18 21:02:47 /ip4/127.0.0.1/tcp/51775/p2p/QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7
+2022/03/18 21:02:47 /ip4/192.168.1.131/tcp/51775/p2p/QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7
+2022/03/18 21:02:47 My CID: QmY979BVYTaxZymAVE91PWD8PTEZBmaAZvhhpprmwjP9m7
+2022/03/18 21:02:49 - Error connecting to {QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj: [/ip4/10.59.2.182/tcp/15123 /ip4/127.0.0.1/tcp/63012 /ip4/192.168.1.131/tcp/63012 /ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit /ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit]}: failed to dial QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj:
+  * [/ip4/192.168.1.131/tcp/63012] dial tcp4 192.168.1.131:63012: connect: connection refused
+  * [/ip4/127.0.0.1/tcp/63012] dial tcp4 127.0.0.1:63012: connect: connection refused
+  * [/ip4/10.59.2.182/tcp/15123] dial tcp4 10.59.2.182:15123: connect: connection refused
+  * [/ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit] error opening relay circuit: HOP_NO_CONN_TO_DST (260)
+  * [/ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit] concurrent active dial through the same relay failed with a protocol error
+2022/03/18 21:02:58 http: TLS handshake error from [::1]:52175: remote error: tls: unknown certificate
+2022/03/18 21:02:59 http: TLS handshake error from [::1]:52212: remote error: tls: unknown certificate
+2022/03/18 21:08:01 http: TLS handshake error from [::1]:55108: remote error: tls: unknown certificate
+2022/03/18 21:10:04 QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:10:04 QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:10:04 QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:10:04 QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:10:04 QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:10:04 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:10:04 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:10:04 context.Background bootstrapDial QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:10:05 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:10:05 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:10:05 context.Background bootstrapDial QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:10:05 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:10:05 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:10:05 context.Background bootstrapDial QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:10:05 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:10:05 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:10:05 context.Background bootstrapDial QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:10:09 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:10:09 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:10:09 context.Background bootstrapDial QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:10:09 Annoucing with DHT ...
+2022/03/18 21:10:09 Successfully accounced with DHT !
+2022/03/18 21:10:09 Searching for other peers...
+2022/03/18 21:10:09 I can be reached at:
+2022/03/18 21:10:09 /ip4/127.0.0.1/tcp/55422/p2p/QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM
+2022/03/18 21:10:09 /ip4/192.168.1.131/tcp/55422/p2p/QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM
+2022/03/18 21:10:09 /ip4/10.59.2.182/tcp/20334/p2p/QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM
+2022/03/18 21:10:09 My CID: QmYTB2RhdTHxKmJoEwGdMNNsmwcpdihn2hgNBXhefPzHYM
+2022/03/18 21:10:12 - Error connecting to {QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj: [/ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit /ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit /ip4/10.59.2.182/tcp/15123 /ip4/127.0.0.1/tcp/63012 /ip4/192.168.1.131/tcp/63012]}: failed to dial QmT5Jsx5ND7PQT2cCR5LpQiY9VZSvrh5bRDAEUQ1BQJxoj:
+  * [/ip4/192.168.1.131/tcp/63012] dial tcp4 192.168.1.131:63012: connect: connection refused
+  * [/ip4/127.0.0.1/tcp/63012] dial tcp4 127.0.0.1:63012: connect: connection refused
+  * [/ip4/10.59.2.182/tcp/15123] dial tcp4 10.59.2.182:15123: connect: connection refused
+  * [/ip4/147.75.70.221/tcp/4001/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit] error opening relay circuit: HOP_NO_CONN_TO_DST (260)
+  * [/ip4/147.75.70.221/udp/4001/quic/p2p/Qme8g49gm3q4Acp7xWBKg3nAa9fxZ1YmyDJdyGgoG6LsXh/p2p-circuit] concurrent active dial through the same relay failed with a protocol error
+2022/03/18 21:10:20 http: TLS handshake error from [::1]:55794: remote error: tls: unknown certificate
+2022/03/18 21:10:20 http: TLS handshake error from [::1]:55809: remote error: tls: unknown certificate
+2022/03/18 21:18:07 QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4 bootstrapping to QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:18:07 QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4 bootstrapping to QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:18:07 QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4 bootstrapping to QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:18:07 QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4 bootstrapping to QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:18:07 QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4 bootstrapping to QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:18:08 context.Background bootstrapDialSuccess QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:18:08 bootstrapped with QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:18:08 context.Background bootstrapDial QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4 QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt
+2022/03/18 21:18:08 context.Background bootstrapDialSuccess QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:18:08 bootstrapped with QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:18:08 context.Background bootstrapDial QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4 QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+2022/03/18 21:18:08 context.Background bootstrapDialSuccess QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:18:08 bootstrapped with QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:18:08 context.Background bootstrapDial QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4 QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+2022/03/18 21:18:08 context.Background bootstrapDialSuccess QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:18:08 bootstrapped with QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:18:08 context.Background bootstrapDial QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4 QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ
+2022/03/18 21:18:13 context.Background bootstrapDialSuccess QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:18:13 bootstrapped with QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:18:13 context.Background bootstrapDial QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4 QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb
+2022/03/18 21:18:13 Annoucing with DHT ...
+2022/03/18 21:18:13 Successfully accounced with DHT !
+2022/03/18 21:18:13 Searching for other peers...
+2022/03/18 21:18:13 I can be reached at:
+2022/03/18 21:18:13 /ip4/127.0.0.1/tcp/56949/p2p/QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4
+2022/03/18 21:18:13 /ip4/192.168.1.131/tcp/56949/p2p/QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4
+2022/03/18 21:18:13 /ip4/10.59.2.182/tcp/64750/p2p/QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4
+2022/03/18 21:18:13 My CID: QmXpEsyMxKEbAgGCefSZGaUGWmedGz6i8zRUGMMWkDKrj4
+2022/03/18 21:18:21 http: TLS handshake error from [::1]:57149: remote error: tls: unknown certificate
+2022/03/18 21:18:22 http: TLS handshake error from [::1]:57157: remote error: tls: unknown certificate
+2022/03/18 21:18:40 http: TLS handshake error from [::1]:57190: remote error: tls: unknown certificate
