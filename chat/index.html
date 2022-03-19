@@ -6,8 +6,9 @@
     <!--  All snippets are MIT license http://bootdey.com/license -->
     <title>chat app - Bootdey.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/nova_chat.png">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
@@ -15,7 +16,21 @@
 
 <div class="container">
 <div class="row clearfix">
-    <div class="col-lg-12">
+    <div class="col-lg-2">
+      <div class="card chat-app">
+        <div class="chat">
+            <div class="chat-header clearfix">
+                <h6 class="lead"> Peerlist </h6>
+            </div>
+              <div>
+                <ul class="list-group" id="peerlist">
+
+                </ul>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-lg-10">
         <div class="card chat-app">
             <div class="chat">
                 <div class="chat-header clearfix">
@@ -26,7 +41,7 @@
                             </a>
                             <div class="chat-about">
                                 <h6 class="m-b-0"> {{ .roomName }} </h6>
-                                <small>Last seen: 2 hours ago</small>
+                                <!-- <small>Last seen: 2 hours ago</small> -->
                             </div>
                         </div>
                         <div class="col-lg-6 hidden-sm text-right">
@@ -43,6 +58,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="chat-history">
                     <ul class="m-b-0" id="chat-history">
 
@@ -72,6 +88,8 @@
   var conn;
   var msg = document.getElementById("message");
   var chat_box = document.getElementById("chat-history");
+  var peerlist_box = document.getElementById("peerlist");
+  var nova_chat_peerlist_indicator = "NOVA-PEERLIST";
 
   // use this function to send an image to the server as a base64 string
   $(document).ready(function () {
@@ -124,7 +142,7 @@
             console.log(message);
             jsonMsg = JSON.parse(message);
 
-            // console.log("Received message: " + JSON.stringify(jsonMsg));
+            console.log("Received message: " + JSON.stringify(jsonMsg));
 
             receive_message(jsonMsg);
             // for (var i = 0; i < messages.length; i++) {
@@ -159,14 +177,31 @@
   }
 
   function receive_message(jsonMsg) {
-    // Updates the chatbox to display received message
-    chat_box.insertAdjacentHTML("beforeend",
-      '<li class="clearfix"> \
-          <div class="message-data"> \
-              <span class="message-data-time"> ' + jsonMsg.SenderNick + ' </span> \
-          </div> \
-          <div class="message my-message"> ' + jsonMsg.Message + ' </div> \
-        </li>')
+    var peerlist_array;
+
+    // If message is peerlist update
+    if (jsonMsg.SenderNick == nova_chat_peerlist_indicator) {
+      // console.log("Current peerlist:", jsonMsg.Message, typeof(jsonMsg.Message));
+       peerlist_array = JSON.parse(jsonMsg.Message);
+      // console.log(array);
+      for (let i = 0 ; i < peerlist_array.length ; i++){
+        peerlist_box.insertAdjacentHTML("beforeend", '<li class="list-group-item">' + peerlist_array[i] + '</li>');
+      }
+
+    }
+    // message is normal message
+    else {
+      // Updates the chatbox to display received message
+      chat_box.insertAdjacentHTML("beforeend",
+        '<li class="clearfix"> \
+            <div class="message-data"> \
+                <span class="message-data-time"> ' + jsonMsg.SenderNick + ' </span> \
+            </div> \
+            <div class="message my-message"> ' + jsonMsg.Message + ' </div> \
+          </li>')
+    }
+
+
   }
 </script>
 

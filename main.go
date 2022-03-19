@@ -90,11 +90,11 @@ func main() {
 
 		// User specified to run webui in HTTP
 		if *httpFlag {
-			fmt.Println("Starting server on http://localhost:" + http_port + "/chat")
+			fmt.Println("[*] Starting server on http://localhost:" + http_port + "/chat")
 
 			http.ListenAndServe(":" + http_port, r)
 		} else {
-			fmt.Println("Starting server on https://localhost:" + https_port + "/chat")
+			fmt.Println("[*] Starting server on https://localhost:" + https_port + "/chat")
 
 			// Listen and server http listener solely to redirect requests to https
 			// go http.ListenAndServe(":" + http_port, http.HandlerFunc(httpsRedirect))
@@ -102,10 +102,10 @@ func main() {
 			// openssl req -new -newkey rsa:2048 -nodes -keyout ssl/localhost.key -out ssl/localhost.csr
 			// openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt
 			if err := http.ListenAndServeTLS(":" + https_port, "ssl/localhost.crt", "ssl/localhost.key", r); err != nil {
-					fmt.Println("Error: ", err)
-					fmt.Println("Run the commands: \nopenssl req -new -newkey rsa:2048 -nodes -keyout ssl/localhost.key -out ssl/localhost.csr")
-					fmt.Println("and, ")
-					fmt.Println("openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt")
+					fmt.Println("[!] Error: ", err)
+					fmt.Println("[-] Run the commands: \nopenssl req -new -newkey rsa:2048 -nodes -keyout ssl/localhost.key -out ssl/localhost.csr")
+					fmt.Println("[-] and, ")
+					fmt.Println("[-] openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt")
 			}
 		}
 

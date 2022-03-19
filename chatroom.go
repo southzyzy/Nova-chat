@@ -19,13 +19,16 @@ import (
 )
 
 const (
+	nova_chat_peerlist_indicator = "NOVA-PEERLIST"
+
 	// Time allowed to write a message to the peer.
 	writeWait = 10 * time.Second
 	// Time allowed to read the next pong message from the peer.
 	pongWait = 60 * time.Second
 	// Send pings to peer with this period. Must be less than pongWait.
-	// pingPeriod = (pongWait * 9) / 10
-	pingPeriod = 10 * time.Second
+	pingPeriod = (pongWait * 9) / 10
+
+	peerlistInterval = 10 * time.Second
 	// Maximum message size allowed from peer.
 	maxMessageSize = 512
 )
@@ -181,10 +184,10 @@ func (cr *ChatRoom) readFromSocket(conn *websocket.Conn) {
 
 		// Detect if there is a change after sanitisation
 		if string(websocket_message) != string(sanitised_message) {
-			fmt.Println("Caught unsanitised message: ", string(websocket_message))
+			fmt.Println("[..] Caught unsanitised message: ", string(websocket_message))
 		} else {
 			// Prints sanitised message
-			fmt.Println("Message from client: " + string(sanitised_message))
+			fmt.Println("[..] Message from client: " + string(sanitised_message))
 		}
 
 		// If sanitised_message not empty
@@ -199,10 +202,13 @@ func (cr *ChatRoom) readFromSocket(conn *websocket.Conn) {
 func (cr *ChatRoom) writeToSocket(conn *websocket.Conn){
 	// Initialise timer for ping-pong
   ticker := time.NewTicker(pingPeriod)
-  fmt.Printf("[*] Ticker for ping-pong interval initialised every %d seconds\n", pingPeriod/time.Second)
+	peerlistTicker := time.NewTicker(peerlistInterval)
+  fmt.Printf("[*] Ticker for ping-pong interval initialised for every %d seconds\n", pingPeriod/time.Second)
+	fmt.Printf("[*] Ticker for peerlist interval initialised for every %d seconds\n", peerlistInterval/time.Second)
 
 	var message ChatMessage
 	var peerlist []peer.ID
+	var peerlist_string string
 
 	for {
 		select {
@@ -216,10 +222,10 @@ func (cr *ChatRoom) writeToSocket(conn *websocket.Conn){
 
 				// Detect if there is a change after sanitisation
 				if string(plaintext) != string(sanitised_plaintext) {
-					fmt.Println("Caught unsanitised message: (" + m.SenderNick + ") [" + m.SenderID + "]: ", string(plaintext))
+					fmt.Println("[.] Caught unsanitised message: (" + m.SenderNick + ") [" + m.SenderID + "]: ", string(plaintext))
 				} else {
 					// Prints sanitised message
-					fmt.Println("Message from interweb (" + m.SenderNick + ") [" + m.SenderID + "]: " + string(sanitised_plaintext))
+					fmt.Println("[.] Message from interweb (" + m.SenderNick + ") [" + m.SenderID + "]: " + string(sanitised_plaintext))
 				}
 
 				// ChatMessage object
@@ -241,25 +247,54 @@ func (cr *ChatRoom) writeToSocket(conn *websocket.Conn){
 	        return
 	      }
 
+			// Upon peerlist interval
+			case <-peerlistTicker.C:
+				curr_peers := cr.ListPeers()
+
+				// Only send updates to websocket if there is a change in peers
+				if Equal(peerlist, curr_peers) == false {
+						fmt.Println("Peer list updated: ", curr_peers)
+
+						// Converts peer.ID[] to string
+						for _, p := range curr_peers {
+							peerlist_string += shortID(p)
+						}
+
+						// ChatMessage object
+						message = ChatMessage{
+							Message: peerlist_string,
+							SenderID: nova_chat_peerlist_indicator,
+							SenderNick: nova_chat_peerlist_indicator,
+						}
+
+						// Convert message object to byte array using json.Marshal
+						jsonMsg, err := json.Marshal(message)
+						if err != nil {
+							panic(err)
+						}
+
+						// Write message to websocket connection (send to web ui)
+						if err:= conn.WriteMessage(websocket.TextMessage, []byte(jsonMsg)); err != nil {
+							panic(err)
+							return
+						}
+
+						peerlist = curr_peers
+				}
+
 			// Upon ping-pong interval
 			case <-ticker.C:
 				conn.SetWriteDeadline(time.Now().Add(writeWait))
 				if err := conn.WriteMessage(websocket.PingMessage, nil); err != nil {
-					fmt.Println("Websocket connection closed!")
+					fmt.Println("[!] Err: Websocket connection closed!")
 	        panic(err)
 	        return
 				}
-
-				curr_peers := cr.ListPeers()
-				if Equal(peerlist, curr_peers) == false {
-						fmt.Println("Peers: ", curr_peers)
-						peerlist = curr_peers
-				}
-
 		}
 	}
 }
 
+// Handler for websocket connection
 func (cr *ChatRoom) websocketHandler(w http.ResponseWriter, r *http.Request) {
   // Upgrade connection to websocket connection
   conn, err := upgrader.Upgrade(w, r, nil)
@@ -273,9 +308,9 @@ func (cr *ChatRoom) websocketHandler(w http.ResponseWriter, r *http.Request) {
   go cr.writeToSocket(conn)
 }
 
-
+// Handler for main/chat page
 func (cr *ChatRoom) chatHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("chatHandler", string(cr.roomName))
+	fmt.Println("[*] Web UI initialised, roomname: ", string(cr.roomName))
 
 	data := map[string]interface{}{"roomName" : cr.roomName, "nick": cr.nick, "nova_img" : "images/nova_chat.png"}
 
@@ -284,7 +319,7 @@ func (cr *ChatRoom) chatHandler(w http.ResponseWriter, r *http.Request) {
   t.Execute(w, data)
 }
 
-
+// Helper function to determine if 2 []peer.ID arrays are equal
 func Equal(a, b []peer.ID) bool {
     if len(a) != len(b) {
         return false
