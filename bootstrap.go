@@ -10,6 +10,25 @@ import (
 	"github.com/libp2p/go-libp2p-core/host"
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/peerstore"
+
+	dht "github.com/libp2p/go-libp2p-kad-dht"
+	ma "github.com/multiformats/go-multiaddr"
+)
+
+var (
+	// Combination of personal bootstrap nodes and global trusted bootstrap nodes
+	IPFS_PEERS = convertPeers([]string{
+		"/ip4/20.58.178.183/tcp/4001/p2p/12D3KooWMTPPBMp7jjxWCR3Ag2QkwZ8cHYmJBj667qMvYCgphmBq",
+		// "/dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
+		// "/dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa",
+		// "/dnsaddr/bootstrap.libp2p.io/p2p/QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb",
+		// "/dnsaddr/bootstrap.libp2p.io/p2p/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt",
+		// "/ip4/104.131.131.82/tcp/4001/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ",
+		// "/ip4/104.131.131.82/udp/4001/quic/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ",
+	})
+
+	// Just global trusted bootstrap nodes
+	DEFAULT_BOOTSTRAP = dht.GetDefaultBootstrapPeerAddrInfos()
 )
 
 // This code is borrowed from the go-ipfs bootstrap process
@@ -60,4 +79,18 @@ func bootstrapConnect(ctx context.Context, ph host.Host, peers []peer.AddrInfo) 
 		return fmt.Errorf("failed to bootstrap. %s", err)
 	}
 	return nil
+}
+
+// Convert String IPFS addr to Peer address
+func convertPeers(peers []string) []peer.AddrInfo {
+	pinfos := make([]peer.AddrInfo, len(peers))
+	for i, addr := range peers {
+		maddr := ma.StringCast(addr)
+		p, err := peer.AddrInfoFromP2pAddr(maddr)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		pinfos[i] = *p
+	}
+	return pinfos
 }

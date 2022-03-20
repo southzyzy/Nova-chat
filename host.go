@@ -70,8 +70,9 @@ func makeRoutedHost(ctx context.Context, serviceName string) (host.Host, error) 
 	// Make the routed host
 	routedHost := rhost.Wrap(h, kaddht)
 
-	// connect to the chosen ipfs nodes
-	err = bootstrapConnect(ctx, routedHost, dht.GetDefaultBootstrapPeerAddrInfos())
+
+	// connect to the chosen ipfs nodes	
+	err = bootstrapConnect(ctx, routedHost, IPFS_PEERS)
 	if err != nil {
 		return nil, err
 	}
