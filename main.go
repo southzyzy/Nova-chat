@@ -18,9 +18,9 @@ import (
 
 const ( //
 	// HTTP port
-	http_port = "80"
+	http_port = "8080"
 	// HTTPS port
-	https_port = "443"
+	https_port = "8443"
 )
 
 
@@ -51,8 +51,8 @@ func main() {
 	webuiFlag := flag.Bool("webui", false, "flag to run web ui")
 	httpFlag := flag.Bool("http", false, "flag to run web ui in HTTP, default is HTTPS")
 
-	keyFlag := flag.String("key", "", "self-signed certificate")
-	certFlag := flag.String("cert", "", "self-signed key")
+	// keyFlag := flag.String("key", "", "self-signed certificate")
+	// certFlag := flag.String("cert", "", "self-signed key")
 	flag.Parse()
 
 	ctx := context.Background()
@@ -95,7 +95,7 @@ func main() {
 		if *httpFlag {
 			fmt.Println("[*] Starting server on http://localhost:" + http_port + "/chat")
 
-			http.ListenAndServe(":" + http_port, r)
+			http.ListenAndServe("127.0.0.1:" + http_port, r)
 		} else {
 			fmt.Println("[*] Starting server on https://localhost:" + https_port + "/chat")
 			// Listen and server http listener solely to redirect requests to https
@@ -103,7 +103,7 @@ func main() {
 
 			// openssl req -new -newkey rsa:2048 -nodes -keyout ssl/localhost.key -out ssl/localhost.csr
 			// openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt
-			if err := http.ListenAndServeTLS(":" + https_port, "ssl/localhost.crt", "ssl/localhost.key", r); err != nil {
+			if err := http.ListenAndServeTLS("127.0.0.1:" + https_port, "ssl/localhost.crt", "ssl/localhost.key", r); err != nil {
 					fmt.Println("[!] Error: ", err)
 					fmt.Println("[-] Run the commands: \nopenssl req -new -newkey rsa:2048 -nodes -keyout ssl/localhost.key -out ssl/localhost.csr")
 					fmt.Println("[-] and, ")
