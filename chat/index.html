@@ -103,6 +103,10 @@
             var base64String = inputData.replace(replaceValue + ",","");
 
             console.log(base64String);
+
+            msg.value = "<img src=\"data:image/png;base64, " + base64String + "\" alt=\"sent image\" width=\"50%\" height=\"50%\"/>";
+
+            send_message();
         }
     });
   });
