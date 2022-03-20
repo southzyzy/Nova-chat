@@ -2,7 +2,9 @@ package main
 
 import (
 	"context"
+	"errors"
 	"encoding/json"
+	"encoding/base64"
 
 	"github.com/libp2p/go-libp2p-core/peer"
 
@@ -11,11 +13,19 @@ import (
 	"github.com/microcosm-cc/bluemonday"
 
 	"fmt"
-  "time"
-  "bytes"
-  "net/http"
-  "html/template"
-	"github.com/gorilla/websocket"
+	"log"
+    "time"
+    "bytes"
+    "strings"
+    "net/http"
+    "html/template"
+    "github.com/gorilla/websocket"
+    "os/exec"
+    "image"
+    _ "image/gif"
+    _ "image/jpeg"
+    _ "image/png"
+    "io/ioutil"
 )
 
 const (
@@ -44,6 +54,12 @@ var upgrader = websocket.Upgrader{
     ReadBufferSize:  1024,
     WriteBufferSize: 1024,
 }
+
+var (
+    ErrBucket       = errors.New("Invalid bucket!")
+    ErrSize         = errors.New("Invalid size!")
+    ErrInvalidImage = errors.New("Invalid image!")
+)
 
 // ChatRoomBufSize is the number of incoming messages to buffer for each topic.
 const ChatRoomBufSize = 128
@@ -184,7 +200,11 @@ func (cr *ChatRoom) readFromSocket(conn *websocket.Conn) {
 
 		// Detect if there is a change after sanitisation
 		if string(websocket_message) != string(sanitised_message) {
-			fmt.Println("[..] Caught unsanitised message: ", string(websocket_message))
+			if strings.Contains(string(websocket_message), "<img id='user-sent-image'") {
+				upload_get_user_sent_image_url(string(websocket_message))
+			} else {
+				fmt.Println("[..] xx Caught unsanitised message: ", string(websocket_message))
+			}
 		} else {
 			// Prints sanitised message
 			fmt.Println("[..] Message from client: " + string(sanitised_message))
@@ -197,6 +217,51 @@ func (cr *ChatRoom) readFromSocket(conn *websocket.Conn) {
 		}
 
   }
+}
+
+func upload_get_user_sent_image_url(b64_img string) string {
+	fmt.Println("Uploading user sent image.")
+	b64_image := b64_img[31:len(b64_img)-86]
+	filepath, err := saveImageToDisk("./images/uploads/uploaded", b64_image)
+
+	out, err := exec.Command("ipfs", "add", filepath).Output()
+
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    hash := strings.Fields(string(out))[1]
+
+    url_of_file := "https://ipfs.io/ipfs/"+hash
+    fmt.Println(url_of_file)
+
+	return url_of_file
+}
+
+func saveImageToDisk(fileNameBase, data string) (string, error) {
+    idx := strings.Index(data, ";base64,")
+    if idx < 0 {
+        return "", ErrInvalidImage
+    }
+    reader := base64.NewDecoder(base64.StdEncoding, strings.NewReader(data[idx+8:]))
+    buff := bytes.Buffer{}
+    _, err := buff.ReadFrom(reader)
+    if err != nil {
+        return "", err
+    }
+    imgCfg, fm, err := image.DecodeConfig(bytes.NewReader(buff.Bytes()))
+    if err != nil {
+        return "", err
+    }
+
+    if imgCfg.Width > 5000 || imgCfg.Height > 5000 {
+        return "", ErrSize
+    }
+
+    fileName := fileNameBase + "." + fm
+    ioutil.WriteFile(fileName, buff.Bytes(), 0644)
+
+    return fileName, err
 }
 
 func (cr *ChatRoom) writeToSocket(conn *websocket.Conn){

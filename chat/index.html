@@ -104,7 +104,8 @@
 
             console.log(base64String);
 
-            msg.value = "<img src=\"data:image/png;base64, " + base64String + "\" alt=\"sent image\" width=\"50%\" height=\"50%\"/>";
+            // if its img [Nova-Chat-Image-&TgqVj53^m6Z]
+            msg.value = "<img id='user-sent-image' src=\"data:image/png;base64," + base64String + "\" alt=\"sent image\" width=\"50%\" height=\"50%\"/> <p>Uploading to IPFS.. Please wait..</p>";
 
             send_message();
         }
