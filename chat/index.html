@@ -97,8 +97,6 @@
             var replaceValue = (inputData.split(',')[0]);
             var base64String = inputData.replace(replaceValue + ",","");
 
-            console.log(base64String);
-
             // if its img [Nova-Chat-Image-&TgqVj53^m6Z]
             msg.value = "<img id='user-sent-image' src=\"data:image/png;base64," + base64String + "\" alt=\"sent image\" width=\"50%\" height=\"50%\"/> <p>Uploading to IPFS.. Please wait..</p>";
 
@@ -160,14 +158,19 @@
     // Send message to websocket server
     conn.send(msg.value);
 
-    // Updates the chatbox to display sent message
+    // if an image is sent then dont display until it gets the link from server
+    if (msg.value.includes("<img id='user-sent-image'")) {
+        void(0)
+    } else {
+        // Updates the chatbox to display sent message
     chat_box.insertAdjacentHTML("beforeend",
-    '<li class="clearfix"> \
-        <div class="message-data text-right"> \
-            <span class="message-data-time"> {{ .nick }} </span> \
-        </div> \
-        <div class="message other-message float-right">' + sanitize(msg.value) + '</div> \
-    </li>');
+        '<li class="clearfix"> \
+            <div class="message-data text-right"> \
+                <span class="message-data-time"> {{ .nick }} </span> \
+            </div> \
+            <div class="message other-message float-right">' + sanitize(msg.value) + '</div> \
+        </li>');
+    }
 
     // Resets the msg input field
     msg.value = "";
@@ -178,18 +181,34 @@
 
     // If message is peerlist update
     if (jsonMsg.SenderNick == nova_chat_peerlist_indicator) {
-      // console.log("Current peerlist:", jsonMsg.Message, typeof(jsonMsg.Message));
-       peerlist_array = JSON.parse(jsonMsg.Message);
-      // console.log(array);
-      for (let i = 0 ; i < peerlist_array.length ; i++){
+        // console.log("Current peerlist:", jsonMsg.Message, typeof(jsonMsg.Message));
+        peerlist_array = JSON.parse(jsonMsg.Message);
+        console.log(jsonMsg.MessageType);
+        // console.log(array);
+        for (let i = 0 ; i < peerlist_array.length ; i++){
         peerlist_box.insertAdjacentHTML("beforeend", '<li class="list-group-item">' + peerlist_array[i] + '</li>');
-      }
+        }
 
-    }
+    // if message is an image link
+    } else if (jsonMsg.MessageType == 'image_link') {
+        // Code here to handle when image link is being sent back
+        console.log('An image link was sent to client from server: ' + jsonMsg.Message);
+        uploaded_message = "<a href='"+ jsonMsg.Message +"' target='_blank'><img id='user-sent-image' src=\"" + jsonMsg.Base64Image + "\" alt=\"sent image\" width=\"50%\" height=\"50%\"/></a>";
+        chat_box.insertAdjacentHTML("beforeend",
+    '<li class="clearfix"> \
+        <div class="message-data text-right"> \
+            <span class="message-data-time"> {{ .nick }} </span> \
+        </div> \
+        <div class="message other-message float-right">' + uploaded_message + '</div> \
+    </li>');
+        // console.log(replace_with);
+        // document.body.innerHTML = document.body.innerHTML.replace("<p>Uploading to IPFS.. Please wait..</p>", replace_with);
+
     // message is normal message
-    else {
-      // Updates the chatbox to display received message
-      chat_box.insertAdjacentHTML("beforeend",
+    } else {
+        console.log(jsonMsg.MessageType);
+        // Updates the chatbox to display received message
+        chat_box.insertAdjacentHTML("beforeend",
         '<li class="clearfix"> \
             <div class="message-data"> \
                 <span class="message-data-time"> ' + sanitize(jsonMsg.SenderNick) + ' </span> \

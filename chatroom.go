@@ -86,6 +86,8 @@ type ChatMessage struct {
 	Message    string
 	SenderID   string
 	SenderNick string
+	MessageType string
+	Base64Image string
 }
 
 // JoinChatRoom tries to subscribe to the PubSub topic for the room name, returning
@@ -198,13 +200,19 @@ func (cr *ChatRoom) readFromSocket(conn *websocket.Conn) {
 		// Sanitise the message with bluemonday
 		sanitised_message := sanitisation_policy.Sanitize(string(websocket_message))
 
+		// fmt.Println(sanitised_message)
+		if strings.Contains(string(websocket_message), "<img id='user-sent-image'") {
+				// get the image url
+				image_url := upload_get_user_sent_image_url(string(websocket_message))
+				b64_image := extract_b64(string(websocket_message))
+				fmt.Println(string(craft_image_msg(image_url, b64_image)))
+				// send the url back to the client
+				conn.WriteMessage(websocket.TextMessage, []byte(craft_image_msg(image_url, b64_image)))
+		}
+
 		// Detect if there is a change after sanitisation
 		if string(websocket_message) != string(sanitised_message) {
-			if strings.Contains(string(websocket_message), "<img id='user-sent-image'") {
-				upload_get_user_sent_image_url(string(websocket_message))
-			} else {
-				fmt.Println("[..] xx Caught unsanitised message: ", string(websocket_message))
-			}
+			fmt.Println("[..] Caught unsanitised message: ", string(websocket_message))
 		} else {
 			// Prints sanitised message
 			fmt.Println("[..] Message from client: " + string(sanitised_message))
@@ -219,9 +227,32 @@ func (cr *ChatRoom) readFromSocket(conn *websocket.Conn) {
   }
 }
 
-func upload_get_user_sent_image_url(b64_img string) string {
+func craft_image_msg(link string, base64_image string) []byte {
+	// ChatMessage object
+	message := ChatMessage{
+		Message: link,
+		SenderID: "placeholderID",
+		SenderNick: "placeholderNick",
+		MessageType: "image_link",
+		Base64Image: base64_image,
+	}
+
+	// Convert message object to byte array using json.Marshal
+  	jsonMsg, err := json.Marshal(message)
+	if err != nil {
+		panic(err)
+	}
+
+	return jsonMsg
+}
+
+func extract_b64(raw_msg string) string {
+	return raw_msg[31:len(raw_msg)-86]
+}
+
+func upload_get_user_sent_image_url(raw_msg string) string {
 	fmt.Println("Uploading user sent image.")
-	b64_image := b64_img[31:len(b64_img)-86]
+	b64_image := extract_b64(raw_msg)
 	filepath, err := saveImageToDisk("./images/uploads/uploaded", b64_image)
 
 	out, err := exec.Command("ipfs", "add", filepath).Output()
@@ -258,10 +289,10 @@ func saveImageToDisk(fileNameBase, data string) (string, error) {
         return "", ErrSize
     }
 
-    fileName := fileNameBase + "." + fm
-    ioutil.WriteFile(fileName, buff.Bytes(), 0644)
+    filePath := fileNameBase + "." + fm
+    ioutil.WriteFile(filePath, buff.Bytes(), 0644)
 
-    return fileName, err
+    return filePath, err
 }
 
 func (cr *ChatRoom) writeToSocket(conn *websocket.Conn){
@@ -298,6 +329,7 @@ func (cr *ChatRoom) writeToSocket(conn *websocket.Conn){
 					Message: plaintext,
 					SenderID: m.SenderID,
 					SenderNick: m.SenderNick,
+					MessageType: "message",
 				}
 
 				// Convert message object to byte array using json.Marshal
@@ -330,6 +362,7 @@ func (cr *ChatRoom) writeToSocket(conn *websocket.Conn){
 							Message: peerlist_string,
 							SenderID: nova_chat_peerlist_indicator,
 							SenderNick: nova_chat_peerlist_indicator,
+							MessageType: "message",
 						}
 
 						// Convert message object to byte array using json.Marshal
