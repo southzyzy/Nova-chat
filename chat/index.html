@@ -44,17 +44,12 @@
                                 <!-- <small>Last seen: 2 hours ago</small> -->
                             </div>
                         </div>
-                        <div class="col-lg-6 hidden-sm text-right">
-                            <a href="javascript:void(0);" class="btn btn-outline-secondary"><i class="fa fa-camera"></i></a>
-                            <!-- <a href="javascript:void(0);" class="btn btn-outline-primary" onclick="send_image()"><i class="fa fa-image"></i></a> -->
+                        <div class="col-lg-6 hidden-sm text-right">                            <!-- <a href="javascript:void(0);" class="btn btn-outline-primary" onclick="send_image()"><i class="fa fa-image"></i></a> -->
 
                             <!-- This allows the user to select a file from their system to send in the chat -->
                             <label for="file-selector" class="btn btn-outline-primary"><i class="fa fa-image"></i></label>
                             <input type="file" name="" id="file-selector" style="display: none;visibility: none;" accept=".jpeg">
                             <input type="hidden" name="" id="jpegAttachment">
-
-                            <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
                         </div>
                     </div>
                 </div>
@@ -171,7 +166,7 @@
         <div class="message-data text-right"> \
             <span class="message-data-time"> {{ .nick }} </span> \
         </div> \
-        <div class="message other-message float-right">' + msg.value + '</div> \
+        <div class="message other-message float-right">' + sanitize(msg.value) + '</div> \
     </li>');
 
     // Resets the msg input field
@@ -197,14 +192,31 @@
       chat_box.insertAdjacentHTML("beforeend",
         '<li class="clearfix"> \
             <div class="message-data"> \
-                <span class="message-data-time"> ' + jsonMsg.SenderNick + ' </span> \
+                <span class="message-data-time"> ' + sanitize(jsonMsg.SenderNick) + ' </span> \
             </div> \
-            <div class="message my-message"> ' + jsonMsg.Message + ' </div> \
+            <div class="message my-message"> ' + sanitize(jsonMsg.Message) + ' </div> \
           </li>')
     }
-
-
   }
+
+  function sanitize(string) {
+    if (string.includes("<img id='user-sent-image'")) {
+        return string
+    } else {
+        const map = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#x27;',
+          "/": '&#x2F;',
+        };
+        const reg = /[&<>"'/]/ig;
+        return string.replace(reg, (match)=>(map[match]));
+    }
+    
+  }
+
 </script>
 
 
