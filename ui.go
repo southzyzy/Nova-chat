@@ -6,6 +6,8 @@ import (
 	"time"
 	"os"
 	"log"
+	"bufio"
+	"strings"
 	"os/exec"
 
 	"github.com/gdamore/tcell/v2"
@@ -159,14 +161,16 @@ func checkIfCommand(raw_msg string) bool {
 	return contains(arrayOfCommands, raw_msg)
 }
 
-func get_path_of_user_selected_file() string {
+func getPathOfUserSelectedFile() string {
 
 	// create a bash script that opens file dialog for user to select a file
 	bash_script_name := "script.sh"
+	select_file_name := "selected.txt"
 	bash_command := `#!/bin/sh
-FileToUpload="$(osascript -l JavaScript -e 'a=Application.currentApplication();a.includeStandardAdditions=true;a.chooseFile({withPrompt:"Please select a file to process:"}).toString()')"`
+FileToUpload="$(osascript -l JavaScript -e 'a=Application.currentApplication();a.includeStandardAdditions=true;a.chooseFile({withPrompt:"Please select a file to process:"}).toString()')"
+echo $FileToUpload > selected.txt`
 
-
+	// bash script is created
     f, err := os.Create(bash_script_name)
 
     if err != nil {
@@ -175,6 +179,7 @@ FileToUpload="$(osascript -l JavaScript -e 'a=Application.currentApplication();a
 
     defer f.Close()
 
+    // command is written to the bash script
     _, err2 := f.WriteString(bash_command)
 
     if err2 != nil {
@@ -189,11 +194,43 @@ FileToUpload="$(osascript -l JavaScript -e 'a=Application.currentApplication();a
 
     // delete get_file.sh
     out, err = exec.Command("rm", bash_script_name).Output()
+	
+	_ = out 
 
     // get the file that the user selected
-    
+    f, err = os.Open(select_file_name)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer f.Close()
 
-    return string(out)
+	path := ""
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		path = scanner.Text()
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatalln(err)
+	}
+
+	// delete selected.txt
+    out, err = exec.Command("rm", select_file_name).Output()
+
+    return path
+}
+
+func getLinkToIPFSFileAfterUpload(filepath string) string {
+	out, err := exec.Command("ipfs", "add", filepath).Output()
+
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    hash := strings.Fields(string(out))[1]
+
+    url_of_file := "https://ipfs.io/ipfs/"+hash
+
+	return url_of_file
 }
 
 func executeCommands(command string) string {
@@ -206,8 +243,7 @@ func executeCommands(command string) string {
 /exit -> exit the program`
 	}
 	if command == "/send" {
-		msg = "nothing here for now..."
-		msg = get_path_of_user_selected_file()
+		msg = "File was uploaded to: " + getLinkToIPFSFileAfterUpload(getPathOfUserSelectedFile())
 	}
 	if command == "/exit" {
 		os.Exit(3)
