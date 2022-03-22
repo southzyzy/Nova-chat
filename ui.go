@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"io"
 	"time"
+	"os"
+	"log"
+	"os/exec"
 
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
@@ -142,11 +145,86 @@ func (ui *ChatUI) displayChatMessage(cm *ChatMessage) {
 	fmt.Fprintf(ui.msgW, "%s %s\n", prompt, plaintext)
 }
 
+func contains(s []string, str string) bool {
+	for _, v := range s {
+		if v == str {
+			return true
+		}
+	}
+	return false
+}
+
+func checkIfCommand(raw_msg string) bool {
+	arrayOfCommands := []string{"/help", "/send", "/exit"} 
+	return contains(arrayOfCommands, raw_msg)
+}
+
+func get_path_of_user_selected_file() string {
+
+	// create a bash script that opens file dialog for user to select a file
+	bash_script_name := "script.sh"
+	bash_command := `#!/bin/sh
+FileToUpload="$(osascript -l JavaScript -e 'a=Application.currentApplication();a.includeStandardAdditions=true;a.chooseFile({withPrompt:"Please select a file to process:"}).toString()')"`
+
+
+    f, err := os.Create(bash_script_name)
+
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    defer f.Close()
+
+    _, err2 := f.WriteString(bash_command)
+
+    if err2 != nil {
+        log.Fatal(err2)
+    }
+
+    // give the file execution permissions
+    out, err := exec.Command("chmod", "+x", bash_script_name).Output()
+
+    // execute the bash script
+    out, err = exec.Command("/bin/sh", bash_script_name).Output()
+
+    // delete get_file.sh
+    out, err = exec.Command("rm", bash_script_name).Output()
+
+    // get the file that the user selected
+    
+
+    return string(out)
+}
+
+func executeCommands(command string) string {
+	msg := ""
+	if command == "/help" {
+		msg = `/help
+=== HELP MENU ===
+/help -> get help
+/send -> select and upload a file to ipfs and send link
+/exit -> exit the program`
+	}
+	if command == "/send" {
+		msg = "nothing here for now..."
+		msg = get_path_of_user_selected_file()
+	}
+	if command == "/exit" {
+		os.Exit(3)
+	}
+	return msg
+}
+
 // displaySelfMessage writes a message from ourself to the message window,
 // with our nick highlighted in yellow.
 func (ui *ChatUI) displaySelfMessage(msg string) {
+	// check if user entered a command
 	prompt := withColor("yellow", fmt.Sprintf("<%s>:", ui.cr.nick))
+	if checkIfCommand(msg) {
+		msg = executeCommands(msg)
+	}
 	fmt.Fprintf(ui.msgW, "%s %s\n", prompt, msg)
+	
 }
 
 // handleEvents runs an event loop that sends user input to the chat room
