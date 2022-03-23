@@ -4,6 +4,11 @@ import (
 	"fmt"
 	"io"
 	"time"
+	"os"
+	"log"
+	"bufio"
+	"strings"
+	"os/exec"
 
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
@@ -140,6 +145,110 @@ func (ui *ChatUI) displayChatMessage(cm *ChatMessage) {
 	// Decrypt the cipher text
 	plaintext := aesDecrypt(ui.cr.roomName, cm.Message)
 	fmt.Fprintf(ui.msgW, "%s %s\n", prompt, plaintext)
+}
+
+func contains(s []string, str string) bool {
+	for _, v := range s {
+		if v == str {
+			return true
+		}
+	}
+	return false
+}
+
+func checkIfCommand(raw_msg string) bool {
+	arrayOfCommands := []string{"/help", "/send", "/exit"} 
+	return contains(arrayOfCommands, raw_msg)
+}
+
+func getPathOfUserSelectedFile() string {
+
+	// create a bash script that opens file dialog for user to select a file
+	bash_script_name := "script.sh"
+	select_file_name := "selected.txt"
+	bash_command := `#!/bin/sh
+FileToUpload="$(osascript -l JavaScript -e 'a=Application.currentApplication();a.includeStandardAdditions=true;a.chooseFile({withPrompt:"Please select a file to process:"}).toString()')"
+echo $FileToUpload > selected.txt`
+
+	// bash script is created
+    f, err := os.Create(bash_script_name)
+
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    defer f.Close()
+
+    // command is written to the bash script
+    _, err2 := f.WriteString(bash_command)
+
+    if err2 != nil {
+        log.Fatal(err2)
+    }
+
+    // give the file execution permissions
+    out, err := exec.Command("chmod", "+x", bash_script_name).Output()
+
+    // execute the bash script
+    out, err = exec.Command("/bin/sh", bash_script_name).Output()
+
+    // delete get_file.sh
+    out, err = exec.Command("rm", bash_script_name).Output()
+	
+	_ = out 
+
+    // get the file that the user selected
+    f, err = os.Open(select_file_name)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer f.Close()
+
+	path := ""
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		path = scanner.Text()
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatalln(err)
+	}
+
+	// delete selected.txt
+    out, err = exec.Command("rm", select_file_name).Output()
+
+    return path
+}
+
+func getLinkToIPFSFileAfterUpload(filepath string) string {
+	out, err := exec.Command("ipfs", "add", filepath).Output()
+
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    hash := strings.Fields(string(out))[1]
+
+    url_of_file := "https://ipfs.io/ipfs/"+hash
+
+	return url_of_file
+}
+
+func executeCommands(command string) string {
+	msg := ""
+	if command == "/help" {
+		msg = `/help
+=== HELP MENU ===
+/help -> get help
+/send -> select and upload a file to ipfs and send link
+/exit -> exit the program`
+	}
+	if command == "/send" {
+		msg = "File was uploaded to: " + getLinkToIPFSFileAfterUpload(getPathOfUserSelectedFile())
+	}
+	if command == "/exit" {
+		os.Exit(3)
+	}
+	return msg
 }
 
 // displaySelfMessage writes a message from ourself to the message window,
