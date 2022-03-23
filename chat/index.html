@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>chat app - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/nova_chat.png">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+<div class="row clearfix">
+    <div class="col-lg-2">
+      <div class="card chat-app">
+        <div class="chat">
+            <div class="chat-header clearfix">
+                <h6 class="lead"> Peerlist </h6>
+            </div>
+              <div>
+                <ul class="list-group" id="peerlist">
+
+                </ul>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-lg-10">
+        <div class="card chat-app">
+            <div class="chat">
+                <div class="chat-header clearfix">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                <img src="{{ .nova_img }}" alt="nova_chat_logo">
+                            </a>
+                            <div class="chat-about">
+                                <h6 class="m-b-0"> {{ .roomName }} </h6>
+                                <!-- <small>Last seen: 2 hours ago</small> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-6 hidden-sm text-right">                            <!-- <a href="javascript:void(0);" class="btn btn-outline-primary" onclick="send_image()"><i class="fa fa-image"></i></a> -->
+
+                            <!-- This allows the user to select a file from their system to send in the chat -->
+                            <label for="file-selector" class="btn btn-outline-primary"><i class="fa fa-image"></i></label>
+                            <input type="file" name="" id="file-selector" style="display: none;visibility: none;" accept=".jpeg">
+                            <input type="hidden" name="" id="jpegAttachment">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-history">
+                    <ul class="m-b-0" id="chat-history">
+
+                    </ul>
+                </div>
+
+                <!-- Form POST request to /chat route -->
+                <form onsubmit="" id="message_form">
+                  <div class="chat-message clearfix">
+                      <div class="input-group mb-0">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fa fa-send"></i></span>
+                          </div>
+                              <input type="text" class="form-control" autocomplete="off" id="message" name="message" placeholder="Enter text here...">
+                      </div>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script>
+
+  var conn;
+  var msg = document.getElementById("message");
+  var chat_box = document.getElementById("chat-history");
+  var peerlist_box = document.getElementById("peerlist");
+  var nova_chat_peerlist_indicator = "NOVA-PEERLIST";
+
+  // use this function to send an image to the server as a base64 string
+  $(document).ready(function () {
+    $('#file-selector').on('change', function(e) {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            var inputData = reader.result;
+            var replaceValue = (inputData.split(',')[0]);
+            var base64String = inputData.replace(replaceValue + ",","");
+
+            // if its img [Nova-Chat-Image-&TgqVj53^m6Z]
+            msg.value = "<img id='user-sent-image' src=\"data:image/png;base64," + base64String + "\" alt=\"sent image\" width=\"50%\" height=\"50%\"/> <p>Uploading to IPFS.. Please wait..</p>";
+
+            send_message();
+        }
+    });
+  });
+
+  window.onload = function () {
+
+    document.getElementById("message_form").onsubmit = function () {
+        if (!conn) {
+            console.log("Form submit detected, no connection!")
+            return false;
+        }
+        if (!msg.value) {
+          console.log("Form submit detected, no message!")
+            return false;
+        }
+
+        send_message();
+
+        return false;
+    };
+
+    if (window["WebSocket"]) {
+        // Initialise the websocket connection (TLS)
+        // To get websockets to work with normal HTTP traffic, use "ws://" instead of "wss://"
+        conn = new WebSocket("wss://" + document.location.host + "/ws");
+
+        // Logs to console if connection is closed
+        conn.onclose = function (evt) {
+            console.log("WebSocket connection closed.");
+            alert("WebSocket connection closed.");
+            location.reload();
+        };
+
+        // Upon receiving message from server
+        conn.onmessage = function (evt) {
+            var message = evt.data.split('\n');
+
+            jsonMsg = JSON.parse(message);
+
+            console.log("Received message: " + JSON.stringify(jsonMsg));
+
+            receive_message(jsonMsg);
+        };
+    } else {
+        var item = document.createElement("div");
+        item.innerHTML = "<b>Your browser does not support WebSockets.</b>";
+        appendLog(item);
+    }
+  };
+
+
+  function send_message() {
+    console.log("Sending message: " + msg.value);
+
+    // Send message to websocket server
+    conn.send(msg.value);
+
+    // if an image is sent then dont display until it gets the link from server
+    if (msg.value.includes("<img id='user-sent-image'")) {
+        void(0)
+    } else {
+        // Updates the chatbox to display sent message
+    chat_box.insertAdjacentHTML("beforeend",
+        '<li class="clearfix"> \
+            <div class="message-data text-right"> \
+                <span class="message-data-time"> {{ .nick }} </span> \
+            </div> \
+            <div class="message other-message float-right">' + sanitize(msg.value) + '</div> \
+        </li>');
+    }
+
+    // Resets the msg input field
+    msg.value = "";
+  }
+
+  function receive_message(jsonMsg) {
+    var peerlist_array;
+
+    // If message is peerlist update
+    if (jsonMsg.SenderNick == nova_chat_peerlist_indicator) {
+        // console.log("Current peerlist:", jsonMsg.Message, typeof(jsonMsg.Message));
+        peerlist_array = JSON.parse(jsonMsg.Message);
+        console.log(jsonMsg.MessageType);
+        // console.log(array);
+        for (let i = 0 ; i < peerlist_array.length ; i++){
+        peerlist_box.insertAdjacentHTML("beforeend", '<li class="list-group-item">' + peerlist_array[i] + '</li>');
+        }
+
+    // if message is an image link
+    } else if (jsonMsg.MessageType == 'image_link') {
+        // Code here to handle when image link is being sent back
+        console.log('An image link was sent to client from server: ' + jsonMsg.Message);
+        uploaded_message = "<a href='"+ jsonMsg.Message +"' target='_blank'><img id='user-sent-image' src=\"" + jsonMsg.Base64Image + "\" alt=\"sent image\" width=\"50%\" height=\"50%\"/></a>";
+        chat_box.insertAdjacentHTML("beforeend",
+    '<li class="clearfix"> \
+        <div class="message-data text-right"> \
+            <span class="message-data-time"> {{ .nick }} </span> \
+        </div> \
+        <div class="message other-message float-right">' + uploaded_message + '</div> \
+    </li>');
+        // console.log(replace_with);
+        // document.body.innerHTML = document.body.innerHTML.replace("<p>Uploading to IPFS.. Please wait..</p>", replace_with);
+
+    // message is normal message
+    } else {
+        console.log(jsonMsg.MessageType);
+        // Updates the chatbox to display received message
+        chat_box.insertAdjacentHTML("beforeend",
+        '<li class="clearfix"> \
+            <div class="message-data"> \
+                <span class="message-data-time"> ' + sanitize(jsonMsg.SenderNick) + ' </span> \
+            </div> \
+            <div class="message my-message"> ' + sanitize(jsonMsg.Message) + ' </div> \
+          </li>')
+    }
+  }
+
+  function sanitize(string) {
+    if (string.includes("<img id='user-sent-image'")) {
+        return string
+    } else {
+        const map = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#x27;',
+          "/": '&#x2F;',
+        };
+        const reg = /[&<>"'/]/ig;
+        return string.replace(reg, (match)=>(map[match]));
+    }
+    
+  }
+
+</script>
+
+
+<style type="text/css">
+body{
+    background-color: #f4f7f6;
+    margin-top:20px;
+}
+.card {
+    background: #fff;
+    transition: .5s;
+    border: 0;
+    margin-bottom: 30px;
+    border-radius: .55rem;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+}
+.chat-app .people-list {
+    width: 280px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px;
+    z-index: 7
+}
+
+.chat-app .chat {
+    /* margin-left: 280px; */
+    border-left: 1px solid #eaeaea
+}
+
+.people-list {
+    -moz-transition: .5s;
+    -o-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s
+}
+
+.people-list .chat-list li {
+    padding: 10px 15px;
+    list-style: none;
+    border-radius: 3px
+}
+
+.people-list .chat-list li:hover {
+    background: #efefef;
+    cursor: pointer
+}
+
+.people-list .chat-list li.active {
+    background: #efefef
+}
+
+.people-list .chat-list li .name {
+    font-size: 15px
+}
+
+.people-list .chat-list img {
+    width: 45px;
+    border-radius: 50%
+}
+
+.people-list img {
+    float: left;
+    border-radius: 50%
+}
+
+.people-list .about {
+    float: left;
+    padding-left: 8px
+}
+
+.people-list .status {
+    color: #999;
+    font-size: 13px
+}
+
+.chat .chat-header {
+    padding: 15px 20px;
+    border-bottom: 2px solid #f4f7f6
+}
+
+.chat .chat-header img {
+    float: left;
+    border-radius: 40px;
+    width: 40px
+}
+
+.chat .chat-header .chat-about {
+    float: left;
+    padding-left: 10px
+}
+
+.chat .chat-history {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 540px;
+    overflow-y:auto;
+    padding: 20px;
+    border-bottom: 2px solid #fff
+}
+
+.chat .chat-history ul {
+    padding: 0
+}
+
+.chat .chat-history ul li {
+    list-style: none;
+    margin-bottom: 30px
+}
+
+.chat .chat-history ul li:last-child {
+    margin-bottom: 0px
+}
+
+.chat .chat-history .message-data {
+    margin-bottom: 15px
+}
+
+.chat .chat-history .message-data img {
+    border-radius: 40px;
+    width: 40px
+}
+
+.chat .chat-history .message-data-time {
+    color: #434651;
+    padding-left: 6px
+}
+
+.chat .chat-history .message {
+    color: #444;
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    display: inline-block;
+    position: relative
+}
+
+.chat .chat-history .message:after {
+    bottom: 100%;
+    left: 7%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #fff;
+    border-width: 10px;
+    margin-left: -10px
+}
+
+.chat .chat-history .my-message {
+    background: #efefef
+}
+
+.chat .chat-history .my-message:after {
+    bottom: 100%;
+    left: 30px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #efefef;
+    border-width: 10px;
+    margin-left: -10px
+}
+
+.chat .chat-history .other-message {
+    background: #e8f1f3;
+    text-align: right
+}
+
+.chat .chat-history .other-message:after {
+    border-bottom-color: #e8f1f3;
+    left: 93%
+}
+
+.chat .chat-message {
+    padding: 20px
+}
+
+.online,
+.offline,
+.me {
+    margin-right: 2px;
+    font-size: 8px;
+    vertical-align: middle
+}
+
+.online {
+    color: #86c541
+}
+
+.offline {
+    color: #e47297
+}
+
+.me {
+    color: #1d8ecd
+}
+
+.float-right {
+    float: right
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0
+}
+
+@media only screen and (max-width: 767px) {
+    .chat-app .people-list {
+        height: 465px;
+        width: 100%;
+        overflow-x: auto;
+        background: #fff;
+        left: -400px;
+        display: none
+    }
+    .chat-app .people-list.open {
+        left: 0
+    }
+    .chat-app .chat {
+        margin: 0
+    }
+    .chat-app .chat .chat-header {
+        border-radius: 0.55rem 0.55rem 0 0
+    }
+    .chat-app .chat-history {
+        height: 300px;
+        overflow-x: auto
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .chat-app .chat-list {
+        height: 650px;
+        overflow-x: auto
+    }
+    .chat-app .chat-history {
+        height: 600px;
+        overflow-x: auto
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+    .chat-app .chat-list {
+        height: 480px;
+        overflow-x: auto
+    }
+    .chat-app .chat-history {
+        height: calc(100vh - 350px);
+        overflow-x: auto
+    }
+}
+</style>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
