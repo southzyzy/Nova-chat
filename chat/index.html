@@ -205,14 +205,17 @@
     } else if (jsonMsg.MessageType == 'image_link') {
         // Code here to handle when image link is being sent back
         console.log('An image link was sent to client from server: ' + jsonMsg.Message);
-        uploaded_message = jsonMsg.Message;
-        chat_box.insertAdjacentHTML("beforeend",
-    '<li class="clearfix"> \
-        <div class="message-data text-right"> \
-            <span class="message-data-time"> {{ .nick }} </span> \
-        </div> \
-        <div class="message other-message float-right">' + uploaded_message + '</div> \
-    </li>');
+        uploaded_message = "File was uploaded to: " + jsonMsg.Message;
+    //     chat_box.insertAdjacentHTML("beforeend",
+    // '<li class="clearfix"> \
+    //     <div class="message-data text-right"> \
+    //         <span class="message-data-time"> {{ .nick }} </span> \
+    //     </div> \
+    //     <div class="message other-message float-right">' + uploaded_message + '</div> \
+    // </li>');
+        msg.value = uploaded_message;
+
+        send_message();
         // console.log(replace_with);
         // document.body.innerHTML = document.body.innerHTML.replace("<p>Uploading to IPFS.. Please wait..</p>", replace_with);
 

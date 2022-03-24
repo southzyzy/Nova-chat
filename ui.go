@@ -138,13 +138,25 @@ func (ui *ChatUI) refreshPeers() {
 	ui.app.Draw()
 }
 
+func validIncomingMessage(msg string) bool {
+	if strings.Contains(msg, "<img id=\"user-sent-image\"") {
+		return false
+	} else if checkIfCommand(msg) {
+		return false
+	}
+	return true
+}
+
 // displayChatMessage writes a ChatMessage from the room to the message window,
 // with the sender's nick highlighted in green.
 func (ui *ChatUI) displayChatMessage(cm *ChatMessage) {
 	prompt := withColor("green", fmt.Sprintf("<%s>:", cm.SenderNick))
 	// Decrypt the cipher text
 	plaintext := aesDecrypt(ui.cr.roomName, cm.Message)
-	fmt.Fprintf(ui.msgW, "%s %s\n", prompt, plaintext)
+
+	if validIncomingMessage(plaintext) {
+		fmt.Fprintf(ui.msgW, "%s %s\n", prompt, plaintext)
+	}
 }
 
 func containsInList(s []string, str string) bool {
@@ -233,7 +245,8 @@ func getLinkToIPFSFileAfterUpload(filepath string) string {
 	return url_of_file
 }
 
-func executeCommands(command string) string {
+func executeCommands(command string) (bool, string) {
+	isSend := false
 	msg := ""
 	if command == "/help" {
 		msg = `/help
@@ -243,12 +256,13 @@ func executeCommands(command string) string {
 /exit -> exit the program`
 	}
 	if command == "/send" {
+		isSend = true
 		msg = "File was uploaded to: " + getLinkToIPFSFileAfterUpload(getPathOfUserSelectedFile())
 	}
 	if command == "/exit" {
 		os.Exit(3)
 	}
-	return msg
+	return isSend, msg
 }
 
 // displaySelfMessage writes a message from ourself to the message window,
@@ -256,13 +270,14 @@ func executeCommands(command string) string {
 func (ui *ChatUI) displaySelfMessage(msg string) {
 	// check if user entered a command
 	prompt := withColor("yellow", fmt.Sprintf("<%s>:", ui.cr.nick))
-	if strings.Contains(msg, "<img id='user-sent-image'") {
-		_ = msg
+	if checkIfCommand(msg) {
+		isSend, msg := executeCommands(msg)
+		if isSend {
+			ui.cr.Publish(msg)
+			fmt.Fprintf(ui.msgW, "%s %s\n", prompt, msg)
+		}
 	} else {
-		if checkIfCommand(msg) {
-		msg = executeCommands(msg)
-	}
-	fmt.Fprintf(ui.msgW, "%s %s\n", prompt, msg)
+		fmt.Fprintf(ui.msgW, "%s %s\n", prompt, msg)
 	}
 }
 
@@ -277,9 +292,12 @@ func (ui *ChatUI) handleEvents() {
 		select {
 		case input := <-ui.inputCh:
 			// when the user types in a line, publish it to the chat room and print to the message window
-			err := ui.cr.Publish(input)
-			if err != nil {
-				printErr("publish error: %s", err)
+			// check if its a command, if so, dont send it out
+			if !checkIfCommand(input) {
+				err := ui.cr.Publish(input)
+				if err != nil {
+					printErr("publish error: %s", err)
+				}
 			}
 			ui.displaySelfMessage(input)
 
