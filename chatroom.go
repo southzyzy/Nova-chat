@@ -235,7 +235,8 @@ func (cr *ChatRoom) socketReadHandler(conn *websocket.Conn) {
 func (cr *ChatRoom) socketWriteHandler(conn *websocket.Conn){
 	// Initialise timer for ping-pong
   ticker := time.NewTicker(pingPeriod)
-	peerlistTicker := time.NewTicker(peerlistInterval)
+  _ = ticker
+  peerlistTicker := time.NewTicker(peerlistInterval)
   fmt.Printf("[*] Ticker for ping-pong interval initialised for every %d seconds\n", pingPeriod/time.Second)
 	fmt.Printf("[*] Ticker for peerlist interval initialised for every %d seconds\n", peerlistInterval/time.Second)
 
