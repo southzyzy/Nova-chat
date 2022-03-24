@@ -200,20 +200,21 @@
             peerlist_box.insertAdjacentHTML("beforeend", '<li class="list-group-item">' + peerlist_array[i] + '</li>');
           }
         }
+      
     // if message is an image link
-    } else if (jsonMsg.MessageType == imageMessageType) {
-          // Code here to handle when image link is being sent back
-          console.log('An image link was sent to client from server: ' + jsonMsg.Message);
-          uploaded_message = "<a href='"+ jsonMsg.Message +"' target='_blank'><img id='user-sent-image' src=\"" + jsonMsg.Base64Image + "\" alt=\"sent image\" width=\"50%\" height=\"50%\"/></a>";
-          chat_box.insertAdjacentHTML("beforeend",
-      '<li class="clearfix"> \
-          <div class="message-data text-right"> \
-              <span class="message-data-time"> {{ .nick }} </span> \
-          </div> \
-          <div class="message other-message float-right">' + uploaded_message + '</div> \
-      </li>');
-          // console.log(replace_with);
-          // document.body.innerHTML = document.body.innerHTML.replace("<p>Uploading to IPFS.. Please wait..</p>", replace_with);
+    } else if (jsonMsg.MessageType == 'image_link') {
+        // Code here to handle when image link is being sent back
+        console.log('An image link was sent to client from server: ' + jsonMsg.Message);
+        uploaded_message = jsonMsg.Message;
+        chat_box.insertAdjacentHTML("beforeend",
+    '<li class="clearfix"> \
+        <div class="message-data text-right"> \
+            <span class="message-data-time"> {{ .nick }} </span> \
+        </div> \
+        <div class="message other-message float-right">' + uploaded_message + '</div> \
+    </li>');
+        // console.log(replace_with);
+        // document.body.innerHTML = document.body.innerHTML.replace("<p>Uploading to IPFS.. Please wait..</p>", replace_with);
 
     // message is normal message
     } else {

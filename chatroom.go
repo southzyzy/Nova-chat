@@ -93,7 +93,6 @@ type ChatMessage struct {
 	SenderID   string
 	SenderNick string
 	MessageType string
-	Base64Image string
 }
 
 // JoinChatRoom tries to subscribe to the PubSub topic for the room name, returning
@@ -325,10 +324,9 @@ func craft_image_msg(link string, base64_image string) []byte {
 	// ChatMessage object
 	message := ChatMessage{
 		Message: link,
-		SenderID: novachatServer,
-		SenderNick: novachatServer,
-		MessageType: imageMessageType,
-		Base64Image: base64_image,
+		SenderID: "placeholderID",
+		SenderNick: "placeholderNick",
+		MessageType: "image_link",
 	}
 
 	// Convert message object to byte array using json.Marshal

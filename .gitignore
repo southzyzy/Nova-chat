@@ -1,4 +1,7 @@
-# Ignore Log directory
+ssl/localhost.crt
+ssl/localhost.csr
+ssl/localhost.key
 logs
 /logs
 logs/*
+.DS_Store
