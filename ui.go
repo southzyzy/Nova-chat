@@ -147,7 +147,7 @@ func (ui *ChatUI) displayChatMessage(cm *ChatMessage) {
 	fmt.Fprintf(ui.msgW, "%s %s\n", prompt, plaintext)
 }
 
-func contains(s []string, str string) bool {
+func containsInList(s []string, str string) bool {
 	for _, v := range s {
 		if v == str {
 			return true
@@ -158,7 +158,7 @@ func contains(s []string, str string) bool {
 
 func checkIfCommand(raw_msg string) bool {
 	arrayOfCommands := []string{"/help", "/send", "/exit"} 
-	return contains(arrayOfCommands, raw_msg)
+	return containsInList(arrayOfCommands, raw_msg)
 }
 
 func getPathOfUserSelectedFile() string {
@@ -256,11 +256,14 @@ func executeCommands(command string) string {
 func (ui *ChatUI) displaySelfMessage(msg string) {
 	// check if user entered a command
 	prompt := withColor("yellow", fmt.Sprintf("<%s>:", ui.cr.nick))
-	if checkIfCommand(msg) {
+	if strings.Contains(msg, "<img id='user-sent-image'") {
+		_ = msg
+	} else {
+		if checkIfCommand(msg) {
 		msg = executeCommands(msg)
 	}
 	fmt.Fprintf(ui.msgW, "%s %s\n", prompt, msg)
-	
+	}
 }
 
 // handleEvents runs an event loop that sends user input to the chat room
