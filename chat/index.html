@@ -84,7 +84,8 @@
   var msg = document.getElementById("message");
   var chat_box = document.getElementById("chat-history");
   var peerlist_box = document.getElementById("peerlist");
-  var nova_chat_peerlist_indicator = "NOVA-PEERLIST";
+  var peerlistMessageType = "peer-list";
+  var imageMessageType = "image_link";
 
   // use this function to send an image to the server as a base64 string
   $(document).ready(function () {
@@ -139,8 +140,7 @@
             var message = evt.data.split('\n');
 
             jsonMsg = JSON.parse(message);
-
-            console.log("Received message: " + JSON.stringify(jsonMsg));
+            // console.log("Received message: " + JSON.stringify(jsonMsg));
 
             receive_message(jsonMsg);
         };
@@ -153,7 +153,7 @@
 
 
   function send_message() {
-    console.log("Sending message: " + msg.value);
+    // console.log("Sending message: " + msg.value);
 
     // Send message to websocket server
     conn.send(msg.value);
@@ -178,22 +178,34 @@
 
   function receive_message(jsonMsg) {
     var peerlist_array;
+    var child; //
 
     // If message is peerlist update
-    if (jsonMsg.SenderNick == nova_chat_peerlist_indicator) {
+    if (jsonMsg.MessageType == peerlistMessageType) {
         // console.log("Current peerlist:", jsonMsg.Message, typeof(jsonMsg.Message));
-        peerlist_array = JSON.parse(jsonMsg.Message);
-        console.log(jsonMsg.MessageType);
-        // console.log(array);
-        for (let i = 0 ; i < peerlist_array.length ; i++){
-        peerlist_box.insertAdjacentHTML("beforeend", '<li class="list-group-item">' + peerlist_array[i] + '</li>');
+        // peerlist_array = JSON.parse(jsonMsg.Message);
+        // console.log(jsonMsg.Message, jsonMsg.MessageType);
+
+        child = peerlist_box.lastElementChild;
+        while (child){
+            peerlist_box.removeChild(child);
+            child = peerlist_box.lastElementChild;
         }
 
+        // console.log(array);
+        peerlist_array = jsonMsg.Message.trim().split(",");
+
+        for (let i = 0 ; i < peerlist_array.length ; i++){
+          if (peerlist_array[i]) {
+            peerlist_box.insertAdjacentHTML("beforeend", '<li class="list-group-item">' + peerlist_array[i] + '</li>');
+          }
+        }
+      
     // if message is an image link
     } else if (jsonMsg.MessageType == 'image_link') {
         // Code here to handle when image link is being sent back
         console.log('An image link was sent to client from server: ' + jsonMsg.Message);
-        uploaded_message = jsonMsg.Message
+        uploaded_message = jsonMsg.Message;
         chat_box.insertAdjacentHTML("beforeend",
     '<li class="clearfix"> \
         <div class="message-data text-right"> \
@@ -206,7 +218,6 @@
 
     // message is normal message
     } else {
-        console.log(jsonMsg.MessageType);
         // Updates the chatbox to display received message
         chat_box.insertAdjacentHTML("beforeend",
         '<li class="clearfix"> \
@@ -233,7 +244,7 @@
         const reg = /[&<>"'/]/ig;
         return string.replace(reg, (match)=>(map[match]));
     }
-    
+
   }
 
 </script>

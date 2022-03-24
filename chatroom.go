@@ -29,7 +29,12 @@ import (
 )
 
 const (
-	nova_chat_peerlist_indicator = "NOVA-PEERLIST"
+	novachatServer = "nova-chat-server"
+
+	// Types of message
+	peerlistMessageType = "peer-list"
+	plaintextMessageType = "message"
+	imageMessageType = "image_link"
 
 	// Time allowed to write a message to the peer.
 	writeWait = 10 * time.Second
@@ -39,6 +44,7 @@ const (
 	pingPeriod = (pongWait * 9) / 10
 
 	peerlistInterval = 10 * time.Second
+
 	// Maximum message size allowed from peer.
 	maxMessageSize = 256000
 )
@@ -177,10 +183,10 @@ func topicName(roomName string) string {
 // Web sockets stuffs
 // ##################################################################################################################################
 
-func (cr *ChatRoom) readFromSocket(conn *websocket.Conn) {
+func (cr *ChatRoom) socketReadHandler(conn *websocket.Conn) {
 
   conn.SetReadLimit(maxMessageSize)
-  conn.SetReadDeadline(time.Now().Add(pongWait))
+  // conn.SetReadDeadline(time.Now().Add(pongWait))
   conn.SetPongHandler(func(string) error { conn.SetReadDeadline(time.Now().Add(pongWait)); return nil })
 
   for {
@@ -211,10 +217,10 @@ func (cr *ChatRoom) readFromSocket(conn *websocket.Conn) {
 
 		// Detect if there is a change after sanitisation
 		if string(websocket_message) != string(sanitised_message) {
-			fmt.Println("[..] Caught unsanitised message: ", string(websocket_message))
+			fmt.Println("[-] Caught unsanitised message: ", string(websocket_message))
 		} else {
 			// Prints sanitised message
-			fmt.Println("[..] Message from client: " + string(sanitised_message))
+			fmt.Println("[-] Message from client: " + string(sanitised_message))
 		}
 
 		// If sanitised_message not empty
@@ -225,6 +231,94 @@ func (cr *ChatRoom) readFromSocket(conn *websocket.Conn) {
 
   }
 }
+
+func (cr *ChatRoom) socketWriteHandler(conn *websocket.Conn){
+	// Initialise timer for ping-pong
+  ticker := time.NewTicker(pingPeriod)
+	peerlistTicker := time.NewTicker(peerlistInterval)
+  fmt.Printf("[*] Ticker for ping-pong interval initialised for every %d seconds\n", pingPeriod/time.Second)
+	fmt.Printf("[*] Ticker for peerlist interval initialised for every %d seconds\n", peerlistInterval/time.Second)
+
+	// var message ChatMessage
+	var peerlist []peer.ID
+	var peerlist_string string
+
+	for {
+		select {
+			// Upon a new message received
+			case m := <- cr.Messages:
+				// Decrypt message
+				plaintext := aesDecrypt(cr.roomName, m.Message)
+
+				// Sanitise the message with bluemonday
+				sanitised_plaintext := sanitisation_policy.Sanitize(string(plaintext))
+
+				// Detect if there is a change after sanitisation
+				if string(plaintext) != string(sanitised_plaintext) {
+					fmt.Println("[-] Caught unsanitised message: (" + m.SenderNick + ") [" + m.SenderID + "]: ", string(plaintext))
+				} else {
+					// Prints sanitised message
+					fmt.Println("[-] Message from interweb (" + m.SenderNick + ") [" + m.SenderID + "]: " + string(sanitised_plaintext))
+				}
+
+				// Write message to websocket connection (send to web ui)
+	      if err:= conn.WriteMessage(websocket.TextMessage, craftMessage(plaintext, m.SenderID, m.SenderNick, plaintextMessageType)); err != nil {
+					fmt.Println("Error sending message: ", err)
+	      }
+
+			// Upon peerlist interval
+			case <-peerlistTicker.C:
+				curr_peers := cr.ListPeers()
+
+				fmt.Println("[*] Current peers: ", curr_peers)
+
+				// Only send updates to websocket if there is a change in peers
+				if Equal(peerlist, curr_peers) == false {
+						// Converts peer.ID[] to string
+						for _, p := range curr_peers {
+							peerlist_string += shortID(p) + ","
+						}
+
+						// Write message to websocket connection (send to web ui)
+						if err:= conn.WriteMessage(websocket.TextMessage, craftMessage(peerlist_string, novachatServer, novachatServer, peerlistMessageType)); err != nil {
+							fmt.Println("Error sending message: ", err)
+						}
+
+						peerlist = curr_peers
+						peerlist_string = ""
+				}
+
+			// // Upon ping-pong interval
+			// case <-ticker.C:
+			// 	// conn.SetWriteDeadline(time.Now().Add(writeWait))
+			// 	if err := conn.WriteMessage(websocket.PingMessage, nil); err != nil {
+			// 		fmt.Println("[!] Err: Websocket connection closed!")
+	    //     panic(err)
+	    //     return
+			// 	}
+		}
+	}
+}
+
+func craftMessage(messagetext string, senderid string, sendernick string, messagetype string) []byte {
+		var message ChatMessage
+		// ChatMessage object
+		message = ChatMessage{
+			Message: messagetext,
+			SenderID: senderid,
+			SenderNick: sendernick,
+			MessageType: messagetype,
+		}
+
+		// Convert message object to byte array using json.Marshal
+		jsonMsg, err := json.Marshal(message)
+		if err != nil {
+			panic(err)
+		}
+
+		return jsonMsg
+}
+
 
 func craft_image_msg(link string, base64_image string) []byte {
 	// ChatMessage object
@@ -293,102 +387,6 @@ func saveImageToDisk(fileNameBase, data string) (string, error) {
     return filePath, err
 }
 
-func (cr *ChatRoom) writeToSocket(conn *websocket.Conn){
-	// Initialise timer for ping-pong
-  ticker := time.NewTicker(pingPeriod)
-	peerlistTicker := time.NewTicker(peerlistInterval)
-  fmt.Printf("[*] Ticker for ping-pong interval initialised for every %d seconds\n", pingPeriod/time.Second)
-	fmt.Printf("[*] Ticker for peerlist interval initialised for every %d seconds\n", peerlistInterval/time.Second)
-
-	var message ChatMessage
-	var peerlist []peer.ID
-	var peerlist_string string
-
-	for {
-		select {
-			// Upon a new message received
-			case m := <- cr.Messages:
-				// Decrypt message
-				plaintext := aesDecrypt(cr.roomName, m.Message)
-
-				// Sanitise the message with bluemonday
-				sanitised_plaintext := sanitisation_policy.Sanitize(string(plaintext))
-
-				// Detect if there is a change after sanitisation
-				if string(plaintext) != string(sanitised_plaintext) {
-					fmt.Println("[.] Caught unsanitised message: (" + m.SenderNick + ") [" + m.SenderID + "]: ", string(plaintext))
-				} else {
-					// Prints sanitised message
-					fmt.Println("[.] Message from interweb (" + m.SenderNick + ") [" + m.SenderID + "]: " + string(sanitised_plaintext))
-				}
-
-				// ChatMessage object
-				message = ChatMessage{
-					Message: plaintext,
-					SenderID: m.SenderID,
-					SenderNick: m.SenderNick,
-					MessageType: "message",
-				}
-
-				// Convert message object to byte array using json.Marshal
-			  jsonMsg, err := json.Marshal(message)
-				if err != nil {
-					panic(err)
-				}
-
-				// Write message to websocket connection (send to web ui)
-	      if err:= conn.WriteMessage(websocket.TextMessage, []byte(jsonMsg)); err != nil {
-	        panic(err)
-	        return
-	      }
-
-			// Upon peerlist interval
-			case <-peerlistTicker.C:
-				curr_peers := cr.ListPeers()
-
-				// Only send updates to websocket if there is a change in peers
-				if Equal(peerlist, curr_peers) == false {
-						fmt.Println("Peer list updated: ", curr_peers)
-
-						// Converts peer.ID[] to string
-						for _, p := range curr_peers {
-							peerlist_string += shortID(p)
-						}
-
-						// ChatMessage object
-						message = ChatMessage{
-							Message: peerlist_string,
-							SenderID: nova_chat_peerlist_indicator,
-							SenderNick: nova_chat_peerlist_indicator,
-							MessageType: "message",
-						}
-
-						// Convert message object to byte array using json.Marshal
-						jsonMsg, err := json.Marshal(message)
-						if err != nil {
-							panic(err)
-						}
-
-						// Write message to websocket connection (send to web ui)
-						if err:= conn.WriteMessage(websocket.TextMessage, []byte(jsonMsg)); err != nil {
-							panic(err)
-							return
-						}
-
-						peerlist = curr_peers
-				}
-
-			// Upon ping-pong interval
-			case <-ticker.C:
-				conn.SetWriteDeadline(time.Now().Add(writeWait))
-				if err := conn.WriteMessage(websocket.PingMessage, nil); err != nil {
-					fmt.Println("[!] Err: Websocket connection closed!")
-	        panic(err)
-	        return
-				}
-		}
-	}
-}
 
 // Handler for websocket connection
 func (cr *ChatRoom) websocketHandler(w http.ResponseWriter, r *http.Request) {
@@ -400,8 +398,8 @@ func (cr *ChatRoom) websocketHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Execute goroutines for both read and write socket connection operations
-  go cr.readFromSocket(conn)
-  go cr.writeToSocket(conn)
+  go cr.socketReadHandler(conn)
+  go cr.socketWriteHandler(conn)
 }
 
 // Handler for main/chat page
