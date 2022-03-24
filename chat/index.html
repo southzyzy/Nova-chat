@@ -193,7 +193,7 @@
     } else if (jsonMsg.MessageType == 'image_link') {
         // Code here to handle when image link is being sent back
         console.log('An image link was sent to client from server: ' + jsonMsg.Message);
-        uploaded_message = "<a href='"+ jsonMsg.Message +"' target='_blank'><img id='user-sent-image' src=\"" + jsonMsg.Base64Image + "\" alt=\"sent image\" width=\"50%\" height=\"50%\"/></a>";
+        uploaded_message = jsonMsg.Message
         chat_box.insertAdjacentHTML("beforeend",
     '<li class="clearfix"> \
         <div class="message-data text-right"> \
