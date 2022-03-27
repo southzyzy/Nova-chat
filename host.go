@@ -9,7 +9,6 @@ import (
 
 	"github.com/libp2p/go-libp2p"
 	"github.com/libp2p/go-libp2p-core/peer"
-	"github.com/libp2p/go-libp2p-core/host"
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"github.com/libp2p/go-libp2p-core/peerstore"
 
@@ -22,7 +21,7 @@ import (
 )
 
 // Func to make routed host
-func makeRoutedHost(ctx context.Context, serviceName string) (host.Host, error) {
+func makeRoutedHost(ctx context.Context, serviceName string) (*rhost.RoutedHost, error) {
 	r := rand.Reader
 
 	// Generate a key pair for this host. We will use it at least
@@ -71,7 +70,6 @@ func makeRoutedHost(ctx context.Context, serviceName string) (host.Host, error) 
 
 	// Make the routed host
 	routedHost := rhost.Wrap(h, kaddht)
-
 
 	// connect to the chosen ipfs nodes	
 	err = bootstrapConnect(ctx, routedHost, IPFS_PEERS)
