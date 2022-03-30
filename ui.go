@@ -7,6 +7,7 @@ import (
 	"os"
 	"log"
 	"bufio"
+	"runtime"
 	"strings"
 	"os/exec"
 
@@ -118,9 +119,6 @@ func (ui *ChatUI) Run() error {
 
 // end signals the event loop to exit gracefully
 func (ui *ChatUI) end() {
-	// Cancel the subscribed topic
-	ui.cr.sub.Cancel()
-	
 	ui.doneCh <- struct{}{}
 }
 
@@ -249,6 +247,9 @@ func getLinkToIPFSFileAfterUpload(filepath string) string {
 }
 
 func executeCommands(command string) (bool, string) {
+	if runtime.GOOS == "windows" {
+		return true, "Cannot run commands in windows at the moment."
+	}
 	isSend := false
 	msg := ""
 	if command == "/help" {
