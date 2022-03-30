@@ -258,12 +258,11 @@ func executeCommands(command string) (bool, string) {
 /help -> get help
 /send -> select and upload a file to ipfs and send link
 /exit -> exit the program`
-	}
-	if command == "/send" {
+	} else if command == "/send" {
 		isSend = true
 		msg = "File was uploaded to: " + getLinkToIPFSFileAfterUpload(getPathOfUserSelectedFile())
-	}
-	if command == "/exit" {
+		return isSend, msg
+	} else if command == "/exit" {
 		os.Exit(3)
 	}
 	return isSend, msg
@@ -297,7 +296,14 @@ func (ui *ChatUI) handleEvents() {
 		case input := <-ui.inputCh:
 			// when the user types in a line, publish it to the chat room and print to the message window
 			// check if its a command, if so, dont send it out
-			if !checkIfCommand(input) {
+			if !checkIfCommand(input) || input == "/help"{
+				if input == "/help" {
+					input = `/help
+=== HELP MENU ===
+/help -> get help
+/send -> select and upload a file to ipfs and send link
+/exit -> exit the program`
+				}
 				err := ui.cr.Publish(input)
 				if err != nil {
 					printErr("publish error: %s", err)
