@@ -95,9 +95,10 @@ func main() {
 		// openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt
 		if err := http.ListenAndServeTLS("127.0.0.1:" + https_port, "ssl/localhost.crt", "ssl/localhost.key", r); err != nil {
 				fmt.Println("[!] Error: ", err)
-				fmt.Println("[-] Run the commands: \nopenssl req -new -newkey rsa:2048 -nodes -keyout ssl/localhost.key -out ssl/localhost.csr")
-				fmt.Println("[-] and, ")
-				fmt.Println("[-] openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt")
+				fmt.Println("[-] Run the commands:")
+				fmt.Println("    mkdir ssl")
+				fmt.Println("    openssl req -new -newkey rsa:2048 -nodes -subj /C=SG/ST=Singapore/L=Singapore/O=Novachat/OU=/Novachat/CN=localhost -keyout ssl/localhost.key -out ssl/localhost.csr")
+				fmt.Println("    openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt")
 		}
 
 	} else {
