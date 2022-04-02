@@ -4,17 +4,53 @@
 ## Usages
 Before accessing NovaChat features, you can either run or build the program. You can read more about it here: https://blog.devgenius.io/go-build-vs-go-run-baa3da9715cc
 
-Change your working directory to Nova-chat project directory:  
+### Change working directory
+Change your working directory to Nova-chat project directory:<br>
 `cd Nova-chat`
 
-To run the program with default paramters, use the following command:  
+### Running the program
+To run the program with default parameters, use the following command:<br>
 `go run .`
 
-To build and run the program, output to "novachat":  
+### Building the program
+To build and run the program, output to *novachat*:<br>
 `go build -o novachat`  
 `./novachat`
 
-To show parameters:  
+### Showing help menu
+To show parameters:<br>
 `go run . -h`  
 
 ![output for help](readme_resources/help_output.png "Help output")
+
+## Advanced Usage
+
+### Running with custom nickname
+To run the program with a custom nickname of *Jason Bourne*:<br>
+`go run . -nick=JasonBourne`
+
+### Running with custom topic name
+To run the program with a custom topic name of *watermelonbananas*:<br>
+`go run . -topic=watermelonbananas`
+
+### Running with HTTP (only for web-ui, HTTP instead of HTTPS)
+`go run . -http`
+
+
+## Novachat user interfaces (UI)
+Novachat offers 2 user interfaces, one terminal-based and one web-based.
+
+### Web-UI
+The web interface can be run using the following command:<br>
+`go run . --webui`
+#### Default Webpage
+![Web interface](readme_resources/webui.png "Web interface")
+#### Webpage with peers
+![Web interface with peers](readme_resources/webui-withpeers.png "Web interface with peers")
+
+
+### Terminal-UI
+The terminal interface (default) can be run using the following command:<br>
+`go run .`
+
+![Terminal interface](readme_resources/terminalui.png "Terminal interface")
