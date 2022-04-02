@@ -170,7 +170,7 @@ func containsInList(s []string, str string) bool {
 }
 
 func checkIfCommand(raw_msg string) bool {
-	arrayOfCommands := []string{"/help", "/send", "/exit"} 
+	arrayOfCommands := []string{"/help", "/send", "/exit"}
 	return containsInList(arrayOfCommands, raw_msg)
 }
 
@@ -207,8 +207,8 @@ echo $FileToUpload > selected.txt`
 
     // delete get_file.sh
     out, err = exec.Command("rm", bash_script_name).Output()
-	
-	_ = out 
+
+	_ = out
 
     // get the file that the user selected
     f, err = os.Open(select_file_name)

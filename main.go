@@ -156,7 +156,7 @@ func webuiRouter(cr *ChatRoom) *mux.Router {
   r.PathPrefix("/images/").Handler(chatFileHandler).Methods("GET")
 
   // Handler for websocket
-  r.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
+  r.HandleFunc("/wss", func(w http.ResponseWriter, r *http.Request) {
 		cr.websocketHandler(w, r)
 	})
 

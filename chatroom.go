@@ -14,17 +14,17 @@ import (
 
 	"fmt"
 	"log"
-    "time"
-    "bytes"
-    "strings"
-    "net/http"
-    "html/template"
-    "github.com/gorilla/websocket"
-    "os/exec"
-    "image"
-    _ "image/gif"
-    _ "image/jpeg"
-    _ "image/png"
+  "time"
+  "bytes"
+  "strings"
+  "net/http"
+  "html/template"
+  "github.com/gorilla/websocket"
+  "os/exec"
+  "image"
+  _ "image/gif"
+  _ "image/jpeg"
+  _ "image/png"
     "io/ioutil"
 )
 
@@ -263,7 +263,7 @@ func (cr *ChatRoom) socketWriteHandler(conn *websocket.Conn){
 				}
 
 				// Write message to websocket connection (send to web ui)
-	      if err:= conn.WriteMessage(websocket.TextMessage, craftMessage(plaintext, m.SenderID, m.SenderNick, plaintextMessageType)); err != nil {
+	      if err:= conn.WriteMessage(websocket.TextMessage, craftMessage(plaintext, m.SenderID[len(m.SenderID)-8:], m.SenderNick, plaintextMessageType)); err != nil {
 					fmt.Println("Error sending message: ", err)
 	      }
 

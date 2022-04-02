@@ -126,7 +126,7 @@
     if (window["WebSocket"]) {
         // Initialise the websocket connection (TLS)
         // To get websockets to work with normal HTTP traffic, use "ws://" instead of "wss://"
-        conn = new WebSocket("wss://" + document.location.host + "/ws");
+        conn = new WebSocket("wss://" + document.location.host + "/wss");
 
         // Logs to console if connection is closed
         conn.onclose = function (evt) {
@@ -200,7 +200,7 @@
             peerlist_box.insertAdjacentHTML("beforeend", '<li class="list-group-item">' + peerlist_array[i] + '</li>');
           }
         }
-      
+
     // if message is an image link
     } else if (jsonMsg.MessageType == 'image_link') {
         // Code here to handle when image link is being sent back
@@ -225,8 +225,8 @@
         chat_box.insertAdjacentHTML("beforeend",
         '<li class="clearfix"> \
             <div class="message-data"> \
-                <span class="message-data-time"> ' + sanitize(jsonMsg.SenderNick) + ' </span> \
-            </div> \
+                <span class="message-data-time"> ' + sanitize(jsonMsg.SenderNick) + ' [' + sanitize(jsonMsg.SenderID) + ']' + ' </span> \
+            </Div> \
             <div class="message my-message"> ' + sanitize(jsonMsg.Message) + ' </div> \
           </li>')
     }
