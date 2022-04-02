@@ -126,7 +126,8 @@
     if (window["WebSocket"]) {
         // Initialise the websocket connection (TLS)
         // To get websockets to work with normal HTTP traffic, use "ws://" instead of "wss://"
-        conn = new WebSocket("wss://" + document.location.host + "/wss");
+        conn = new WebSocket("wss://" + document.location.host + "/ws");
+
 
         // Logs to console if connection is closed
         conn.onclose = function (evt) {

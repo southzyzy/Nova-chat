@@ -17,8 +17,6 @@ import (
 )
 
 const ( //
-	// HTTP port
-	http_port = "8080"
 	// HTTPS port
 	https_port = "8443"
 )
@@ -49,7 +47,7 @@ func main() {
 	nickFlag := flag.String("nick", "", "nickname to use in chat. will be generated if empty")
 	topicFlag := flag.String("topic", "nova-chat-topic", "topic to subscribe")
 	webuiFlag := flag.Bool("webui", false, "flag to run web ui")
-	httpFlag := flag.Bool("http", false, "flag to run web ui in HTTP, default is HTTPS")
+	// httpFlag := flag.Bool("http", false, "flag to run web ui in HTTP, default is HTTPS")
 
 	// keyFlag := flag.String("key", "", "self-signed certificate")
 	// certFlag := flag.String("cert", "", "self-signed key")
@@ -91,24 +89,15 @@ func main() {
 
 		r := webuiRouter(cr)
 
-		// User specified to run webui in HTTP
-		if *httpFlag {
-			fmt.Println("[*] Starting server on http://localhost:" + http_port + "/chat")
+		fmt.Println("[*] Starting server on https://localhost:" + https_port + "/chat")
 
-			http.ListenAndServe("127.0.0.1:" + http_port, r)
-		} else {
-			fmt.Println("[*] Starting server on https://localhost:" + https_port + "/chat")
-			// Listen and server http listener solely to redirect requests to https
-			// go http.ListenAndServe(":" + http_port, http.HandlerFunc(httpsRedirect))
-
-			// openssl req -new -newkey rsa:2048 -nodes -keyout ssl/localhost.key -out ssl/localhost.csr
-			// openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt
-			if err := http.ListenAndServeTLS("127.0.0.1:" + https_port, "ssl/localhost.crt", "ssl/localhost.key", r); err != nil {
-					fmt.Println("[!] Error: ", err)
-					fmt.Println("[-] Run the commands: \nopenssl req -new -newkey rsa:2048 -nodes -keyout ssl/localhost.key -out ssl/localhost.csr")
-					fmt.Println("[-] and, ")
-					fmt.Println("[-] openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt")
-			}
+		// openssl req -new -newkey rsa:2048 -nodes -keyout ssl/localhost.key -out ssl/localhost.csr
+		// openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt
+		if err := http.ListenAndServeTLS("127.0.0.1:" + https_port, "ssl/localhost.crt", "ssl/localhost.key", r); err != nil {
+				fmt.Println("[!] Error: ", err)
+				fmt.Println("[-] Run the commands: \nopenssl req -new -newkey rsa:2048 -nodes -keyout ssl/localhost.key -out ssl/localhost.csr")
+				fmt.Println("[-] and, ")
+				fmt.Println("[-] openssl  x509  -req  -days 365  -in ssl/localhost.csr  -signkey ssl/localhost.key  -out ssl/localhost.crt")
 		}
 
 	} else {
@@ -138,15 +127,6 @@ func shortID(p peer.ID) string {
 	return pretty[len(pretty)-8:]
 }
 
-// httpsRedirect redirects http requests to https
-func httpsRedirect(w http.ResponseWriter, r *http.Request) {
-    http.Redirect(
-        w, r,
-        "https://"+r.Host+r.URL.String(),
-        http.StatusMovedPermanently,
-    )
-}
-
 // Router for web ui
 func webuiRouter(cr *ChatRoom) *mux.Router {
 	r := mux.NewRouter()
@@ -156,7 +136,7 @@ func webuiRouter(cr *ChatRoom) *mux.Router {
   r.PathPrefix("/images/").Handler(chatFileHandler).Methods("GET")
 
   // Handler for websocket
-  r.HandleFunc("/wss", func(w http.ResponseWriter, r *http.Request) {
+  r.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		cr.websocketHandler(w, r)
 	})
 
