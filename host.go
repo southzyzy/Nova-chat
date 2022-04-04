@@ -48,8 +48,6 @@ func makeRoutedHost(ctx context.Context, serviceName string) (*rhost.RoutedHost,
 		// This service is highly rate-limited and should not cause any
 		// performance issues.
 		libp2p.EnableNATService(),
-		libp2p.DefaultStaticRelays(),
-		libp2p.EnableAutoRelay(),
 	}
 
 	// create a new libp2p Host that listens on a random TCP port
