@@ -1,4 +1,4 @@
-# Nova-chat
+# NovaChat, A Web 3.0 Chat Application
 [![NovaChat, Decentralised, Open-Sourced, Secure, Real-Time](https://pimp-my-readme.webapp.io/pimp-my-readme/wavy-banner?subtitle=Decentralised%2C%20Open-Sourced%2C%20Secure%2C%20Real-Time&title=NovaChat)](https://pimp-my-readme.webapp.io)
 
 ## IPFS-Based Chat using Gossipsub Protocol
