@@ -1,7 +1,7 @@
 # NovaChat, A Web 3.0 Chat Application
 [![NovaChat, Decentralised, Open-Sourced, Secure, Real-Time](https://pimp-my-readme.webapp.io/pimp-my-readme/wavy-banner?subtitle=Decentralised%2C%20Open-Sourced%2C%20Secure%2C%20Real-Time&title=NovaChat)](https://pimp-my-readme.webapp.io)
 
-- IPFS-Based Chat using Gossipsub Protocol
+- IPFS-Based Chat using Gossipsub Protocol (https://research.protocol.ai/blog/2019/a-new-lab-for-resilient-networks-research/PL-TechRep-gossipsub-v0.1-Dec30.pdf)
 
 ## Usages
 Before accessing NovaChat features, you can either run or build the program. You can read more about it here: https://blog.devgenius.io/go-build-vs-go-run-baa3da9715cc
