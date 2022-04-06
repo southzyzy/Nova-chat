@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	// "sync"
 	"crypto/rand"
 
 	"github.com/libp2p/go-libp2p"
