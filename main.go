@@ -47,10 +47,7 @@ func main() {
 	nickFlag := flag.String("nick", "", "nickname to use in chat. will be generated if empty")
 	topicFlag := flag.String("topic", "nova-chat-topic", "topic to subscribe")
 	webuiFlag := flag.Bool("webui", false, "flag to run web ui")
-	// httpFlag := flag.Bool("http", false, "flag to run web ui in HTTP, default is HTTPS")
 
-	// keyFlag := flag.String("key", "", "self-signed certificate")
-	// certFlag := flag.String("cert", "", "self-signed key")
 	flag.Parse()
 
 	ctx := context.Background()
